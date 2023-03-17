@@ -1,0 +1,5 @@
+rootProject.name = 'planet'
+include 'module-domain'
+include 'module-infrastructure'
+include 'module-presentation'
+include 'module-application'
