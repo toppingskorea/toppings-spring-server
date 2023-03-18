@@ -22,7 +22,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -45,9 +44,6 @@ public class RestaurantAttach {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "restaurant_id")
-	@JsonIgnoreProperties({"images"})
-	@ToString.Exclude
-	@JsonIgnore
 	private Restaurant restaurant;
 
 }

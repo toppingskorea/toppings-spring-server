@@ -67,14 +67,13 @@ public class User extends BaseEntity {
 	private Auth role;
 
 	@Embedded
-	@AttributeOverride(name = "url", column = @Column(name = "user_profile_url"))
-	@AttributeOverride(name = "path", column = @Column(name = "user_profile_path"))
+	@AttributeOverride(name = "url", column = @Column(name = "user_profile_url", columnDefinition = "longtext"))
+	@AttributeOverride(name = "path", column = @Column(name = "user_profile_path", columnDefinition = "varchar(200)"))
 	private Image profile;
 
 	@Column(name = "delete_yn", columnDefinition = "varchar(1) default 'N'")
 	private String deleteYn;
 
-	// getter
 	public String password() {
 		return this.password;
 	}
@@ -83,7 +82,7 @@ public class User extends BaseEntity {
 		return this.username;
 	}
 
-	public String role() {
+	public String roleName() {
 		return this.role.name();
 	}
 }
