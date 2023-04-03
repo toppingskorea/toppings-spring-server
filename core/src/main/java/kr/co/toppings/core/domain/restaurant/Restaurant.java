@@ -55,7 +55,7 @@ public class Restaurant extends BaseEntity {
 	private String code;
 
 	@OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<FoodCategory> categories;
+	private List<RestaurantCategory> categories;
 
 	@Column(name = "delete_yn", columnDefinition = "varchar(1) default 'N'")
 	private String deleteYn;

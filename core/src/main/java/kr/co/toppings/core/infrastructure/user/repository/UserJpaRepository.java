@@ -1,4 +1,4 @@
-package kr.co.toppings.core.infrastructure.user;
+package kr.co.toppings.core.infrastructure.user.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

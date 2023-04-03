@@ -1,6 +1,6 @@
-package kr.co.toppings.core.domain.restaurant.constant;
+package kr.co.toppings.core.domain.restaurant.constants;
 
-public enum FoodTitle {
+public enum CategoryContent {
 
     CoffeeAndDesert,
     Japanese,
