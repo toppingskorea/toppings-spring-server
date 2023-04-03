@@ -1,9 +1,7 @@
 name: Auto Assign Action
 
 on:
-  pull_request:
-    types: [opened]
-    branches: ["main", "develop"]
+  - pull_request_target
 
 jobs:
   add-reviews:
