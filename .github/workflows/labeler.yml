@@ -1,10 +1,9 @@
 name: Auto Labeling
+
 on:
   pull_request:
     types: [opened]
-    branches:
-      - main
-      - develop
+    branches: ["main", "develop"]
 
 jobs:
   update_release_draft:
