@@ -26,11 +26,6 @@ CREATE TABLE t_restaurant_attach (
     PRIMARY KEY (restaurant_attach_id)
 ) DEFAULT CHARSET utf8mb4;
 
-CREATE TABLE t_restaurant_star (
-    restaurant_star_id bigint(20) NOT NULL AUTO_INCREMENT,
-    PRIMARY KEY (restaurant_star_id)
-) DEFAULT CHARSET utf8mb4;
-
 CREATE TABLE t_restaurant_category (
     restaurant_category_id bigint(20) NOT NULL AUTO_INCREMENT,
     PRIMARY KEY (restaurant_category_id)
