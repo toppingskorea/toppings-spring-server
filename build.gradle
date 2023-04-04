@@ -82,5 +82,18 @@ subprojects {
             csv.required = false
             html.required = false
         }
+
+        afterEvaluate {
+            classDirectories.setFrom(
+                files(classDirectories.files.collect {
+                    fileTree(dir: it, excludes: [
+                        '**/*Application*',
+                        '**/*Exception*',
+                        '**/dto/**',
+                        '**/config/**',
+                    ])
+                })
+            )
+        }
     }
 }
