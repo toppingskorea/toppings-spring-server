@@ -56,6 +56,10 @@ task copyPrivate(type: Copy) {
     }
 }
 
+processResources {
+    dependsOn copyPrivate
+}
+
 bootJar {
     enabled = false
 }
