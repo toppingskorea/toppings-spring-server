@@ -13,8 +13,8 @@ import javax.persistence.Table;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
+import kr.co.toppings.core.domain.user.User;
 import kr.co.toppings.core.domain.user.constants.HabitContent;
-import kr.co.toppings.core.domain.user.constants.HabitTitle;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
@@ -31,10 +31,6 @@ public class UserHabit {
 	@Id
 	@Column(name = "user_habit_id")
 	private String id;
-
-	@Enumerated(EnumType.STRING)
-	@Column(name = "user_habit_title", columnDefinition = "varchar(50)")
-	private HabitTitle title;
 
 	@Enumerated(EnumType.STRING)
 	@Column(name = "user_habit_content", columnDefinition = "varchar(100)")

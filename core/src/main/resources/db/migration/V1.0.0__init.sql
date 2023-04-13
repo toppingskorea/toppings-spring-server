@@ -13,6 +13,7 @@ CREATE TABLE t_user (
 
 CREATE TABLE t_user_habit (
     user_habit_id bigint(20) NOT NULL AUTO_INCREMENT,
+    user_habit_name varchar(100) NOT NULL,
     PRIMARY KEY (user_habit_id)
 ) DEFAULT CHARSET utf8mb4;
 
@@ -21,9 +22,11 @@ CREATE TABLE t_restaurant (
     PRIMARY KEY (restaurant_id)
 ) DEFAULT CHARSET utf8mb4;
 
-CREATE TABLE t_restaurant_attach (
-    restaurant_attach_id bigint(20) NOT NULL AUTO_INCREMENT,
-    PRIMARY KEY (restaurant_attach_id)
+CREATE TABLE t_restaurant_image (
+    restaurant_image_id bigint(20) NOT NULL AUTO_INCREMENT,
+    restaurant_image_url longtext NOT NULL,
+    restaurant_image_path longtext NOT NULL,
+    PRIMARY KEY (restaurant_image_id)
 ) DEFAULT CHARSET utf8mb4;
 
 CREATE TABLE t_restaurant_category (
@@ -31,19 +34,21 @@ CREATE TABLE t_restaurant_category (
     PRIMARY KEY (restaurant_category_id)
 ) DEFAULT CHARSET utf8mb4;
 
-CREATE TABLE t_review (
-    review_id bigint(20) NOT NULL AUTO_INCREMENT,
-    PRIMARY KEY (review_id)
+CREATE TABLE t_restaurant_comment (
+    restaurant_comment_id bigint(20) NOT NULL AUTO_INCREMENT,
+    PRIMARY KEY (restaurant_comment_id)
 ) DEFAULT CHARSET utf8mb4;
 
-CREATE TABLE t_review_attach (
-    review_attach_id bigint(20) NOT NULL AUTO_INCREMENT,
-    PRIMARY KEY (review_attach_id)
+CREATE TABLE t_restaurant_comment_image (
+    restaurant_comment_image_id bigint(20) NOT NULL AUTO_INCREMENT,
+    restaurant_comment_image_url longtext NOT NULL,
+    restaurant_comment_image_path longtext NOT NULL,
+    PRIMARY KEY (restaurant_comment_image_id)
 ) DEFAULT CHARSET utf8mb4;
 
-CREATE TABLE t_scrap (
-    scrap_id bigint(20) NOT NULL AUTO_INCREMENT,
-    PRIMARY KEY (scrap_id)
+CREATE TABLE t_saved_restaurant (
+    saved_restaurant_id bigint(20) NOT NULL AUTO_INCREMENT,
+    PRIMARY KEY (saved_restaurant_id)
 ) DEFAULT CHARSET utf8mb4;
 
 CREATE TABLE t_notification (
