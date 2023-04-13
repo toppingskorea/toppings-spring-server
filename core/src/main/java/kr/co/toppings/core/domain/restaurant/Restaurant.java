@@ -15,7 +15,7 @@ import javax.persistence.Table;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
-import kr.co.toppings.core.support.entity.BaseEntity;
+import kr.co.toppings.core.global.entity.BaseEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -60,24 +60,9 @@ public class Restaurant extends BaseEntity {
 	@Column(name = "delete_yn", columnDefinition = "varchar(1) default 'N'")
 	private String deleteYn;
 
-	@Column(name = "restaurant_like_count", columnDefinition = "int default 0")
-	private Integer likeCount;
-
-	@Column(name = "restaurant_scrap_count", columnDefinition = "int default 0")
-	private Integer scrapCount;
-
 	@Column(name = "public_yn", columnDefinition = "varchar(1) default 'P'")
 	private String publicYn;
 
-	@Column(name = "reject_cause")
-	private String cause;
-
-	@Column(name = "instagram_id")
-	private String instagramId;
-
 	@OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<RestaurantAttach> images = new ArrayList<>();
-
-	@Column(name = "restaurant_thumbnail", columnDefinition = "longtext")
-	private String thumbnail;
+	private List<RestaurantImage> images = new ArrayList<>();
 }

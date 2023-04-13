@@ -48,6 +48,18 @@ configurations {
     querydsl.extendsFrom compileClasspath
 }
 
+task copyPrivate(type: Copy) {
+    copy {
+        from '../toppings-server-config'
+        include "*.yml"
+        into 'src/main/resources'
+    }
+}
+
+processResources {
+    dependsOn copyPrivate
+}
+
 bootJar {
     enabled = false
 }

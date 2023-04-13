@@ -21,8 +21,8 @@ import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
 import kr.co.toppings.core.domain.user.constants.Auth;
-import kr.co.toppings.core.support.entity.BaseEntity;
-import kr.co.toppings.core.support.entity.embedded.Image;
+import kr.co.toppings.core.global.entity.BaseEntity;
+import kr.co.toppings.core.global.entity.embedded.Image;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
