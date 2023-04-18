@@ -34,16 +34,16 @@ CREATE TABLE t_restaurant_category (
     PRIMARY KEY (restaurant_category_id)
 ) DEFAULT CHARSET utf8mb4;
 
-CREATE TABLE t_restaurant_comment (
-    restaurant_comment_id bigint(20) NOT NULL AUTO_INCREMENT,
-    PRIMARY KEY (restaurant_comment_id)
+CREATE TABLE t_review (
+    review_id bigint(20) NOT NULL AUTO_INCREMENT,
+    PRIMARY KEY (review_id)
 ) DEFAULT CHARSET utf8mb4;
 
-CREATE TABLE t_restaurant_comment_image (
-    restaurant_comment_image_id bigint(20) NOT NULL AUTO_INCREMENT,
-    restaurant_comment_image_url longtext NOT NULL,
-    restaurant_comment_image_path longtext NOT NULL,
-    PRIMARY KEY (restaurant_comment_image_id)
+CREATE TABLE t_review_image (
+    review_image_id bigint(20) NOT NULL AUTO_INCREMENT,
+    review_image_url longtext NOT NULL,
+    review_image_path longtext NOT NULL,
+    PRIMARY KEY (review_image_id)
 ) DEFAULT CHARSET utf8mb4;
 
 CREATE TABLE t_saved_restaurant (

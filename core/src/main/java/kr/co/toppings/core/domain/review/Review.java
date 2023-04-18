@@ -1,4 +1,4 @@
-package kr.co.toppings.core.domain.restaurant;
+package kr.co.toppings.core.domain.review;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +18,7 @@ import javax.persistence.Table;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
+import kr.co.toppings.core.domain.restaurant.Restaurant;
 import kr.co.toppings.core.domain.user.User;
 import kr.co.toppings.core.global.entity.BaseEntity;
 import lombok.AllArgsConstructor;
@@ -33,7 +34,7 @@ import lombok.NoArgsConstructor;
 @DynamicUpdate
 @DynamicInsert
 @Table(name = "t_review")
-public class RestaurantComment extends BaseEntity {
+public class Review extends BaseEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -52,7 +53,7 @@ public class RestaurantComment extends BaseEntity {
 	private String description;
 
 	@OneToMany(mappedBy = "review", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<RestaurantCommentImage> images = new ArrayList<>();
+	private List<ReviewImage> images = new ArrayList<>();
 
 	@Column(name = "review_thumbnail", columnDefinition = "longtext")
 	private String thumbnail;

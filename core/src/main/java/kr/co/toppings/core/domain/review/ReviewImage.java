@@ -1,4 +1,4 @@
-package kr.co.toppings.core.domain.restaurant;
+package kr.co.toppings.core.domain.review;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -24,7 +24,7 @@ import lombok.NoArgsConstructor;
 @DynamicUpdate
 @DynamicInsert
 @Table(name = "t_review_attach")
-public class RestaurantCommentImage {
+public class ReviewImage {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,6 +39,6 @@ public class RestaurantCommentImage {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "review_id")
-	private RestaurantComment restaurantComment;
+	private Review review;
 
 }
