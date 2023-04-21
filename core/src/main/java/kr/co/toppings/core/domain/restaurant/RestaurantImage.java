@@ -1,6 +1,8 @@
 package kr.co.toppings.core.domain.restaurant;
 
+import javax.persistence.AttributeOverride;
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -13,6 +15,7 @@ import javax.persistence.Table;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
+import kr.co.toppings.core.global.entity.embedded.Image;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
@@ -31,11 +34,10 @@ public class RestaurantImage {
 	@Column(name = "restaurant_attach_id")
 	private Long id;
 
-	@Column(name = "restaurant_image", columnDefinition = "longtext")
-	private String image;
-
-	@Column(name = "restaurant_image_path", columnDefinition = "varchar(200)")
-	private String path;
+	@Embedded
+	@AttributeOverride(name = "url", column = @Column(name = "restaurant_image", columnDefinition = "longtext"))
+	@AttributeOverride(name = "path", column = @Column(name = "restaurant_image_path", columnDefinition = "varchar(200)"))
+	private Image image;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "restaurant_id")

@@ -3,8 +3,10 @@ package kr.co.toppings.core.domain.restaurant;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.AttributeOverride;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,6 +18,7 @@ import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
 import kr.co.toppings.core.global.entity.BaseEntity;
+import kr.co.toppings.core.global.entity.embedded.Image;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -45,11 +48,10 @@ public class Restaurant extends BaseEntity {
 	@Column(name = "restaurant_address", columnDefinition = "varchar(150)")
 	private String address;
 
-	@Column(name = "restaurant_latitude")
-	private Double latitude;
-
-	@Column(name = "restaurant_longitude")
-	private Double longitude;
+	@Embedded
+	@AttributeOverride(name = "latitude", column = @Column(name = "restaurant_latitude"))
+	@AttributeOverride(name = "longitude", column = @Column(name = "restaurant_longitude"))
+	private RestaurantPoint point;
 
 	@Column(name = "restaurant_code", columnDefinition = "varchar(200)", unique = true)
 	private String code;
@@ -59,9 +61,6 @@ public class Restaurant extends BaseEntity {
 
 	@Column(name = "delete_yn", columnDefinition = "varchar(1) default 'N'")
 	private String deleteYn;
-
-	@Column(name = "public_yn", columnDefinition = "varchar(1) default 'P'")
-	private String publicYn;
 
 	@OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<RestaurantImage> images = new ArrayList<>();

@@ -1,4 +1,4 @@
-package kr.co.toppings.core.domain.restaurant;
+package kr.co.toppings.core.domain.user;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

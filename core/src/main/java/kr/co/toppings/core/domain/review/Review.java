@@ -49,14 +49,11 @@ public class Review extends BaseEntity {
 	@JoinColumn(name = "user_id")
 	private User user;
 
-	@Column(name = "review_description", columnDefinition = "text")
-	private String description;
+	@Column(name = "review_content", columnDefinition = "text")
+	private String content;
 
 	@OneToMany(mappedBy = "review", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<ReviewImage> images = new ArrayList<>();
-
-	@Column(name = "review_thumbnail", columnDefinition = "longtext")
-	private String thumbnail;
 
 	@Column(name = "public_yn", columnDefinition = "varchar(1) default 'P'")
 	private String publicYn;

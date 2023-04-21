@@ -35,8 +35,7 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(callSuper = true)
 @DynamicUpdate
 @DynamicInsert
-@Table(name = "t_user",
-	uniqueConstraints = {@UniqueConstraint(name = "t_user_username_uk", columnNames = "user_username")})
+@Table(name = "t_user")
 public class User extends BaseEntity {
 
 	@Id
@@ -53,7 +52,7 @@ public class User extends BaseEntity {
 	@Column(name = "user_name", columnDefinition = "varchar(50)")
 	private String name;
 
-	@Column(name = "user_email", columnDefinition = "varchar(100)")
+	@Column(name = "user_email", columnDefinition = "varchar(100)", unique = true)
 	private String email;
 
 	@Column(name = "user_country", columnDefinition = "varchar(100)")
