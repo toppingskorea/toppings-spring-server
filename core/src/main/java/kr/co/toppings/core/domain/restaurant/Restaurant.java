@@ -42,19 +42,16 @@ public class Restaurant extends BaseEntity {
 	@Column(name = "restaurant_name", columnDefinition = "varchar(100)")
 	private String name;
 
-	@Column(name = "restaurant_description", columnDefinition = "text")
-	private String description;
-
 	@Column(name = "restaurant_address", columnDefinition = "varchar(150)")
 	private String address;
+
+	@Column(name = "restaurant_code", columnDefinition = "varchar(200)", unique = true)
+	private String code;
 
 	@Embedded
 	@AttributeOverride(name = "latitude", column = @Column(name = "restaurant_latitude"))
 	@AttributeOverride(name = "longitude", column = @Column(name = "restaurant_longitude"))
 	private RestaurantPoint point;
-
-	@Column(name = "restaurant_code", columnDefinition = "varchar(200)", unique = true)
-	private String code;
 
 	@OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<RestaurantCategory> categories;

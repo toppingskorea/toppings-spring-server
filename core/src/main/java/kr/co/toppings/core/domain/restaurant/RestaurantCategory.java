@@ -9,8 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import kr.co.toppings.core.domain.restaurant.constants.CategoryContent;
-import kr.co.toppings.core.domain.restaurant.constants.CategoryTitle;
+import kr.co.toppings.core.domain.restaurant.constants.FoodCategory;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
@@ -26,12 +25,8 @@ public class RestaurantCategory {
 	private String id;
 
 	@Enumerated(EnumType.STRING)
-	@Column(name = "food_category_title", columnDefinition = "varchar(50)")
-	private CategoryTitle title;
-
-	@Enumerated(EnumType.STRING)
-	@Column(name = "food_category_content", columnDefinition = "varchar(50)")
-	private CategoryContent content;
+	@Column(name = "food_category", columnDefinition = "varchar(50)")
+	private FoodCategory category;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "restaurant_id")
