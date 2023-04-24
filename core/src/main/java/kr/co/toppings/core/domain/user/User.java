@@ -15,12 +15,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
-import kr.co.toppings.core.domain.user.constants.Auth;
+import kr.co.toppings.core.domain.user.constants.Role;
 import kr.co.toppings.core.global.entity.BaseEntity;
 import kr.co.toppings.core.global.entity.embedded.Image;
 import lombok.AllArgsConstructor;
@@ -63,7 +62,7 @@ public class User extends BaseEntity {
 
 	@Column(name = "user_role", columnDefinition = "varchar(20)")
 	@Enumerated(EnumType.STRING)
-	private Auth role;
+	private Role role;
 
 	@Embedded
 	@AttributeOverride(name = "url", column = @Column(name = "user_profile_url", columnDefinition = "longtext"))
