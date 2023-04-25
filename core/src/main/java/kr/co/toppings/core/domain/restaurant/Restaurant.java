@@ -18,7 +18,6 @@ import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
 import kr.co.toppings.core.global.entity.BaseEntity;
-import kr.co.toppings.core.global.entity.embedded.Image;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;

@@ -26,12 +26,12 @@ import lombok.NoArgsConstructor;
 @Entity
 @DynamicUpdate
 @DynamicInsert
-@Table(name = "t_restaurant_attach")
+@Table(name = "t_restaurant_image")
 public class RestaurantImage {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "restaurant_attach_id")
+	@Column(name = "restaurant_image_id")
 	private Long id;
 
 	@Embedded

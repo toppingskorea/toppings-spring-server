@@ -8,6 +8,7 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 import kr.co.toppings.core.domain.restaurant.constants.FoodCategory;
 import lombok.AllArgsConstructor;
@@ -18,14 +19,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 @Entity
+@Table(name = "t_restaurant_category")
 public class RestaurantCategory {
 
 	@Id
-	@Column(name = "food_category_id")
+	@Column(name = "restaurant_category_id")
 	private String id;
 
 	@Enumerated(EnumType.STRING)
-	@Column(name = "food_category", columnDefinition = "varchar(50)")
+	@Column(name = "restaurant_category", columnDefinition = "varchar(50)")
 	private FoodCategory category;
 
 	@ManyToOne(fetch = FetchType.LAZY)

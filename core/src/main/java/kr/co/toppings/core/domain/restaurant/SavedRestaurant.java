@@ -26,11 +26,11 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(callSuper = true)
 @DynamicUpdate
 @DynamicInsert
-@Table(name = "t_scrap")
+@Table(name = "t_saved_restaurant")
 public class SavedRestaurant extends BaseEntity {
 
     @Id
-    @Column(name = "scrap_id")
+    @Column(name = "saved_restaurant_id")
     private String id;
 
     @ManyToOne(fetch = FetchType.LAZY)

@@ -26,12 +26,12 @@ import lombok.NoArgsConstructor;
 @Entity
 @DynamicUpdate
 @DynamicInsert
-@Table(name = "t_review_attach")
+@Table(name = "t_review_image")
 public class ReviewImage {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "review_attach_id")
+	@Column(name = "review_image_id")
 	private Long id;
 
 	@Embedded
