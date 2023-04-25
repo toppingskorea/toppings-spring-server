@@ -2,5 +2,6 @@ package kr.co.toppings.core.application.user.facade;
 
 import org.springframework.stereotype.Service;
 
-public interface UserServiceFacade {
+@Service
+public class UserServiceFacadeImpl implements UserServiceFacade {
 }
