@@ -71,16 +71,4 @@ public class User extends BaseEntity {
 
 	@Column(name = "delete_yn", columnDefinition = "varchar(1) default 'N'")
 	private String deleteYn;
-
-	public String password() {
-		return this.password;
-	}
-
-	public String username() {
-		return this.username;
-	}
-
-	public String roleName() {
-		return this.role.name();
-	}
 }
