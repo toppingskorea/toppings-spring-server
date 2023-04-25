@@ -5,6 +5,4 @@ spring:
         - local
       dev:
         - dev
-      prod:
-        - main
     default: local

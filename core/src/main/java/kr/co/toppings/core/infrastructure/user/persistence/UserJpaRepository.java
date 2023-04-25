@@ -1,4 +1,4 @@
-package kr.co.toppings.core.infrastructure.persistence.user;
+package kr.co.toppings.core.infrastructure.user.persistence;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

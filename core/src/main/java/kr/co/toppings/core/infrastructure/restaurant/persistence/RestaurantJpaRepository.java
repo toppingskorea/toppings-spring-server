@@ -1,4 +1,4 @@
-package kr.co.toppings.core.infrastructure.persistence.restaurant;
+package kr.co.toppings.core.infrastructure.restaurant.persistence;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

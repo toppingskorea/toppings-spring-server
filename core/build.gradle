@@ -53,7 +53,7 @@ configurations {
 task copyPrivate(type: Copy) {
     copy {
         from '../toppings-server-config'
-        include "*.yml"
+        include "application-*.yml"
         into 'src/main/resources'
     }
 }
