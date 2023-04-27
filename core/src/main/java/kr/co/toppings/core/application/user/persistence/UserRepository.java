@@ -1,4 +1,7 @@
 package kr.co.toppings.core.application.user.persistence;
 
-public interface UserRepository {
+import kr.co.toppings.core.domain.user.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface UserRepository extends JpaRepository<User, Long> {
 }

@@ -10,13 +10,15 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import kr.co.toppings.core.domain.user.constants.Habit;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
-import kr.co.toppings.core.domain.user.constants.Habit;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
+
+import java.util.Arrays;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -38,4 +40,13 @@ public class UserHabit {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "user_id")
 	private User user;
+
+	//==편의 Method==//
+	public Habit getUserHabit(String habitName) {
+		return Arrays.stream(Habit.values())
+					 .filter(habit -> habit.name()
+										   .equalsIgnoreCase(habitName))
+					 .findFirst()
+					 .orElse(null);
+	}
 }
