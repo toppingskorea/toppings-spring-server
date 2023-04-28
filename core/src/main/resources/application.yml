@@ -5,4 +5,6 @@ spring:
         - local
       dev:
         - dev
+      dev2:
+        - dev2
     default: local
