@@ -66,7 +66,6 @@ public class User extends BaseEntity {
 
     //==생성 Method==//
     public static User createUser(String name, String email, Country country) {
-
         return User.builder()
                    .name(name)
                    .country(country)
