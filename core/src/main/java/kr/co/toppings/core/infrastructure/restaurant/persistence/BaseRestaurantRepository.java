@@ -6,7 +6,7 @@ import lombok.RequiredArgsConstructor;
 
 @Repository
 @RequiredArgsConstructor
-public class RestaurantRepositoryImpl {
+public class BaseRestaurantRepository {
 
 	private final RestaurantJpaRepository restaurantJpaRepository;
 }
