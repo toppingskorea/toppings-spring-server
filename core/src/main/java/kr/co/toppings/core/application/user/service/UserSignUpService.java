@@ -3,9 +3,21 @@ package kr.co.toppings.core.application.user.service;
 import kr.co.toppings.core.application.user.dto.request.UserProfile;
 import kr.co.toppings.core.application.user.persistence.UserRepository;
 import kr.co.toppings.core.domain.user.User;
+import kr.co.toppings.core.domain.user.UserHabit;
+import kr.co.toppings.core.domain.user.constants.Country;
+import kr.co.toppings.core.domain.user.constants.Habit;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * 1. 회원가입 - 국적을 선택해야 한다. (NotNull, 단일값)
+ * 2. 회원가입 - 식습관을 선택할 수 있다. (Nullable, 다중값)
+ */
+
 
 @Service
 @RequiredArgsConstructor
@@ -13,12 +25,6 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserSignUpService {
 
     private final UserRepository userRepository;
-
-
-    // OAuth2 -> 앞단에서 나한테 인증토큰, 리프레쉬토큰
-    // 로그인시도를 했을때 이사람이 회원가입이 되어있는가? findById로 검증하는 로직
-    // 마이페이지
-    // 리뷰
 
     @Transactional
     public Long signUpUser(UserProfile request) {
@@ -28,10 +34,13 @@ public class UserSignUpService {
         return saveUser.getId();
     }
 
+    // 이미 회원가입된 유저인지 검증하는 로직
     private User generateUser(UserProfile request) {
         return User.createUser(
                 request.getName(),
                 request.getEmail(),
-                request.getCountry());
+                request.getCountry(),
+                request.getHabits()
+        );
     }
 }

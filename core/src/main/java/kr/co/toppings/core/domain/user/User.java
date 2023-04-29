@@ -11,9 +11,10 @@ import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
+import static javax.persistence.CascadeType.PERSIST;
+import static kr.co.toppings.core.domain.user.UserHabit.createUserHabit;
 import static lombok.AccessLevel.PROTECTED;
 
 @Builder
@@ -49,7 +50,7 @@ public class User extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private Country country;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "user", cascade = PERSIST, orphanRemoval = true)
     private List<UserHabit> habits = new ArrayList<>();
 
     @Column(name = "user_role", columnDefinition = "varchar(20)")
@@ -65,14 +66,20 @@ public class User extends BaseEntity {
     private String deleteYn;
 
     //==생성 Method==//
-    public static User createUser(String name, String email, Country country) {
-        return User.builder()
-                   .name(name)
-                   .country(country)
-                   .email(email)
-                   .build();
+
+    public User(String name, String email, Country country, List<Habit> habits) {
+        this.name = name;
+        this.email = email;
+        this.country = country;
+        applyHabits(habits);
+    }
+
+    public static User createUser(String name, String email, Country country, List<Habit> habits) {
+        return new User(name, email, country, habits);
     }
 
     //==편의 Method==//
-
+    private void applyHabits(List<Habit> habitList) {
+        habitList.forEach(habit -> habits.add(createUserHabit(this, habit)));
+    }
 }
