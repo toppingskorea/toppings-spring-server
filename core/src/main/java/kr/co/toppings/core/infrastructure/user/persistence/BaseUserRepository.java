@@ -7,7 +7,7 @@ import lombok.RequiredArgsConstructor;
 
 @Repository
 @RequiredArgsConstructor
-public class BaseUserRepository implements UserRepository {
+public class BaseUserRepository {
 
 	private final UserJpaRepository userJpaRepository;
 }
