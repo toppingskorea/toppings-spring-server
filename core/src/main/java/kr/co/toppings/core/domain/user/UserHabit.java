@@ -18,6 +18,9 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static javax.persistence.FetchType.LAZY;
 
 @AllArgsConstructor
@@ -49,7 +52,5 @@ public class UserHabit extends BaseEntity {
 						.build();
 	}
 
-	public Habit toHabit() {
-		return this.habit;
-	}
+	//==편의 Method==//
 }

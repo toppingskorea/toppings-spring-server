@@ -29,7 +29,7 @@ class UserSignUpTest {
     private UserSignUpService userSignUpService;
 
     @Test
-//    @Rollback
+    @Rollback
     @Transactional
     @DisplayName("[SignUp]")
     void signUpSuccess() throws Exception {
@@ -41,13 +41,15 @@ class UserSignUpTest {
 
         //then
         Optional<User> result = userRepository.findById(savedUserId);
+
         assertAll(
                 () -> assertThat(result).isPresent(),
                 () -> {
                     User actual = result.orElseThrow();
                     assertThat(actual.getId()).isEqualTo(savedUserId);
+                    assertThat(actual.getHabits()).hasSize(userProfile.getHabits()
+                                                                      .size());
                 }
         );
-
     }
 }

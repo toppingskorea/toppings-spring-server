@@ -11,6 +11,9 @@ import lombok.Getter;
 import java.util.ArrayList;
 import java.util.List;
 
+import static kr.co.toppings.core.domain.user.constants.Habit.BUDDHISM;
+import static kr.co.toppings.core.domain.user.constants.Habit.HINDUISM;
+
 @Getter
 @AllArgsConstructor
 public enum UserFixture {
@@ -26,13 +29,4 @@ public enum UserFixture {
     private final Country country;
 
     private final List<Habit> habits;
-
-    public User toEntity() {
-        return User.createUser(
-                name,
-                email,
-                country,
-                habits
-        );
-    }
 }
