@@ -21,6 +21,7 @@ import lombok.NoArgsConstructor;
 import java.util.ArrayList;
 import java.util.List;
 
+import static javax.persistence.EnumType.STRING;
 import static javax.persistence.FetchType.LAZY;
 
 @AllArgsConstructor
@@ -36,7 +37,7 @@ public class UserHabit extends BaseEntity {
 	@Column(name = "user_habit_id")
 	private String id;
 
-	@Enumerated(EnumType.STRING)
+	@Enumerated(STRING)
 	@Column(name = "user_habit_name", columnDefinition = "varchar(100)")
 	private Habit habit;
 

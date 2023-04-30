@@ -1,8 +1,9 @@
 package kr.co.toppings.core.application.user.service;
 
 import kr.co.toppings.core.application.user.dto.request.UserProfile;
-import kr.co.toppings.core.application.user.persistence.UserRepository;
 import kr.co.toppings.core.domain.user.User;
+import kr.co.toppings.core.infrastructure.user.persistence.UserQueryRepository;
+import kr.co.toppings.core.infrastructure.user.persistence.UserUpdateRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,13 +19,14 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional(readOnly = true)
 public class UserSignUpService {
 
-    private final UserRepository userRepository;
+    private final UserUpdateRepository userUpdateRepository;
+
 
     @Transactional
     public Long signUpUser(UserProfile request) {
         User user = generateUser(request);
         //검증 로직 추가 예정
-        User saveUser = userRepository.save(user);
+        User saveUser = userUpdateRepository.save(user);
         return saveUser.getId();
     }
 

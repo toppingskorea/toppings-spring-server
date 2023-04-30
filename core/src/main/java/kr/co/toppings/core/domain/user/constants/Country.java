@@ -4,6 +4,6 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 public enum Country {
-    KOR,
-    JPN;
+    KOREA,
+    JAPAN;
 }

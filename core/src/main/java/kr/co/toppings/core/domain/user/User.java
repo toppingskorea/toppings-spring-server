@@ -13,7 +13,9 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import static javax.persistence.CascadeType.ALL;
 import static javax.persistence.CascadeType.PERSIST;
+import static javax.persistence.GenerationType.IDENTITY;
 import static kr.co.toppings.core.domain.user.UserHabit.createUserHabit;
 import static lombok.AccessLevel.PROTECTED;
 
@@ -28,7 +30,7 @@ import static lombok.AccessLevel.PROTECTED;
 public class User extends BaseEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = IDENTITY)
     @Column(name = "user_id")
     private Long id;
 
@@ -50,7 +52,7 @@ public class User extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private Country country;
 
-    @OneToMany(mappedBy = "user", cascade = PERSIST, orphanRemoval = true)
+    @OneToMany(mappedBy = "user", cascade = ALL, orphanRemoval = true)
     private List<UserHabit> habits = new ArrayList<>();
 
     @Column(name = "user_role", columnDefinition = "varchar(20)")
