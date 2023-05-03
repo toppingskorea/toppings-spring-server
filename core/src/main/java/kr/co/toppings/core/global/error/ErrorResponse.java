@@ -1,23 +1,21 @@
 package kr.co.toppings.core.global.error;
 
+import lombok.Getter;
+import org.springframework.validation.BindingResult;
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.MethodArgumentNotValidException;
-
-import lombok.Getter;
-
 @Getter
 public class ErrorResponse {
 
-	private String message;
-	private int status;
-	private List<FieldError> errors;
-	private String code;
-	private LocalDateTime timestamp;
+	private final String message;
+	private final int status;
+	private final List<FieldError> errors;
+	private final String code;
+	private final LocalDateTime timestamp;
 
 	private ErrorResponse(
 		String message,
@@ -53,9 +51,9 @@ public class ErrorResponse {
 	@Getter
 	public static class FieldError {
 
-		private String field;
-		private String value;
-		private String reason;
+		private final String field;
+		private final String value;
+		private final String reason;
 
 		private FieldError(
 			String field,
@@ -72,7 +70,7 @@ public class ErrorResponse {
 				.stream()
 				.map(error -> new FieldError(
 					error.getField(),
-					error.getRejectedValue() == null ? "" : error.getDefaultMessage().toString(),
+					error.getRejectedValue() == null ? "" : error.getDefaultMessage(),
 					error.getCode()
 				)).collect(Collectors.toList());
 		}
