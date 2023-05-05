@@ -1,8 +1,7 @@
 package kr.co.toppings.core.application.user.service;
 
-import kr.co.toppings.core.application.user.dto.request.UserProfile;
+import kr.co.toppings.core.application.user.dto.request.UserSignUpRequest;
 import kr.co.toppings.core.domain.user.User;
-import kr.co.toppings.core.infrastructure.user.persistence.UserQueryRepository;
 import kr.co.toppings.core.infrastructure.user.persistence.UserUpdateRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -23,7 +22,7 @@ public class UserSignUpService {
 
 
     @Transactional
-    public Long signUpUser(UserProfile request) {
+    public Long signUpUser(UserSignUpRequest request) {
         User user = generateUser(request);
         //검증 로직 추가 예정
         User saveUser = userUpdateRepository.save(user);
@@ -31,7 +30,7 @@ public class UserSignUpService {
     }
 
     // 이미 회원가입된 유저인지 검증하는 로직 추가 예정
-    private User generateUser(UserProfile request) {
+    private User generateUser(UserSignUpRequest request) {
         return User.createUser(
                 request.getName(),
                 request.getEmail(),
