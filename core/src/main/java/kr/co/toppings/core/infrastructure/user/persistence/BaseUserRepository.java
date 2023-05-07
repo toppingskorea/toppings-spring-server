@@ -1,13 +1,11 @@
 package kr.co.toppings.core.infrastructure.user.persistence;
 
-import org.springframework.stereotype.Repository;
-
-import kr.co.toppings.core.application.user.persistence.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Repository;
 
 @Repository
 @RequiredArgsConstructor
-public class BaseUserRepository implements UserRepository {
+public class BaseUserRepository{
 
-	private final UserJpaRepository userJpaRepository;
+	private final UserQueryRepository userQueryRepository;
 }

@@ -3,6 +3,7 @@ package kr.co.toppings.core.domain.restaurant;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -30,8 +31,9 @@ import lombok.NoArgsConstructor;
 public class SavedRestaurant extends BaseEntity {
 
     @Id
+    @GeneratedValue
     @Column(name = "saved_restaurant_id")
-    private String id;
+    private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "restaurant_id")

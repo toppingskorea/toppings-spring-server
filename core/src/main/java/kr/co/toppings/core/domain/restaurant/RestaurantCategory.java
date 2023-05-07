@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -23,8 +24,9 @@ import lombok.NoArgsConstructor;
 public class RestaurantCategory {
 
 	@Id
+	@GeneratedValue
 	@Column(name = "restaurant_category_id")
-	private String id;
+	private Long id;
 
 	@Enumerated(EnumType.STRING)
 	@Column(name = "restaurant_category", columnDefinition = "varchar(50)")
