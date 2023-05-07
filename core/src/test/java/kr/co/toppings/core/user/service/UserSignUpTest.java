@@ -27,7 +27,7 @@ class UserSignUpTest extends ServiceTest {
 	private UserSignUpService userSignUpService;
 
 	@Test
-	// @Rollback
+	@Rollback
 	@DisplayName("[SignUp] 정상 성공")
 	void signUpSuccess() throws Exception {
 		//given
