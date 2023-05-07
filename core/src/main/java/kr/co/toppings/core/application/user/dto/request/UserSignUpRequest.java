@@ -12,7 +12,7 @@ import static lombok.AccessLevel.PRIVATE;
 
 @Getter
 @NoArgsConstructor(access = PRIVATE)
-@AllArgsConstructor(access = PRIVATE)
+@AllArgsConstructor
 public class UserSignUpRequest {
     private String name;
     private String email;
