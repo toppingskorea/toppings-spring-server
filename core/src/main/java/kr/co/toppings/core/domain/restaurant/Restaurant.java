@@ -1,6 +1,5 @@
 package kr.co.toppings.core.domain.restaurant;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.AttributeOverride;
@@ -18,15 +17,13 @@ import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
 import kr.co.toppings.core.global.entity.BaseEntity;
-import lombok.AllArgsConstructor;
+import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
 @Entity
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @EqualsAndHashCode(callSuper = true)
 @DynamicUpdate
 @DynamicInsert
@@ -47,6 +44,9 @@ public class Restaurant extends BaseEntity {
 	@Column(name = "restaurant_code", columnDefinition = "varchar(200)", unique = true)
 	private String code;
 
+	@Column(name = "restaurant_thumbnail", columnDefinition = "text")
+	private String thumbnail;
+
 	@Embedded
 	@AttributeOverride(name = "latitude", column = @Column(name = "restaurant_latitude"))
 	@AttributeOverride(name = "longitude", column = @Column(name = "restaurant_longitude"))
@@ -55,9 +55,31 @@ public class Restaurant extends BaseEntity {
 	@OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<RestaurantCategory> categories;
 
-	@Column(name = "delete_yn", columnDefinition = "varchar(1) default 'N'")
-	private String deleteYn;
+	@Builder
+	private Restaurant(
+		String name,
+		String address,
+		String code,
+		RestaurantPoint point
+	) {
+		this.name = name;
+		this.address = address;
+		this.code = code;
+		this.point = point;
+	}
 
-	@OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<RestaurantImage> images = new ArrayList<>();
+	public static Restaurant of(
+		String name,
+		String address,
+		String code,
+		double latitude,
+		double longitude
+	) {
+		return Restaurant.builder()
+			.name(name)
+			.address(address)
+			.code(code)
+			.point(RestaurantPoint.of(latitude, longitude))
+			.build();
+	}
 }
