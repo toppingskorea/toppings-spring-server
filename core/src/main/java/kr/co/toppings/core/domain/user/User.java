@@ -1,25 +1,36 @@
 package kr.co.toppings.core.domain.user;
 
+import static javax.persistence.CascadeType.*;
+import static javax.persistence.GenerationType.*;
+import static kr.co.toppings.core.domain.user.UserHabit.*;
+import static lombok.AccessLevel.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.AttributeOverride;
+import javax.persistence.Column;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
+
 import kr.co.toppings.core.domain.user.constants.Country;
 import kr.co.toppings.core.domain.user.constants.Habit;
 import kr.co.toppings.core.domain.user.constants.UserRole;
 import kr.co.toppings.core.global.entity.BaseEntity;
 import kr.co.toppings.core.global.entity.embedded.Image;
-import lombok.*;
-
-import org.hibernate.annotations.DynamicInsert;
-import org.hibernate.annotations.DynamicUpdate;
-
-import javax.persistence.*;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.regex.Pattern;
-
-import static javax.persistence.CascadeType.ALL;
-import static javax.persistence.GenerationType.IDENTITY;
-import static kr.co.toppings.core.domain.user.UserHabit.createUserHabit;
-import static lombok.AccessLevel.PROTECTED;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Builder
 @Entity

@@ -1,24 +1,27 @@
 package kr.co.toppings.core.user.service;
 
-import kr.co.toppings.core.application.user.dto.request.UserSignUpRequest;
-import kr.co.toppings.core.application.user.service.UserSignUpService;
-import kr.co.toppings.core.domain.user.User;
-import kr.co.toppings.core.global.base.ServiceTest;
-import kr.co.toppings.core.user.controller.utils.SignUpRequestUtils;
-import kr.co.toppings.core.infrastructure.user.persistence.UserQueryRepository;
+import static org.assertj.core.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.Optional;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.annotation.Rollback;
 
-import java.util.Optional;
+import kr.co.toppings.core.application.user.dto.request.UserSignUpRequest;
+import kr.co.toppings.core.application.user.service.UserSignUpService;
+import kr.co.toppings.core.domain.user.User;
+import kr.co.toppings.core.global.base.ServiceTestSupport;
+import kr.co.toppings.core.global.error.BusinessException;
+import kr.co.toppings.core.global.error.ErrorCode;
+import kr.co.toppings.core.infrastructure.user.persistence.UserQueryRepository;
+import kr.co.toppings.core.user.controller.utils.SignUpRequestUtils;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertAll;
-
+@Rollback
 @DisplayName("[User-SignUpTest] - SpringBootTest")
-class UserSignUpTest extends ServiceTest {
+class UserSignUpTest extends ServiceTestSupport {
 
 	@Autowired
 	private UserQueryRepository userQueryRepository;
@@ -27,9 +30,8 @@ class UserSignUpTest extends ServiceTest {
 	private UserSignUpService userSignUpService;
 
 	@Test
-	@Rollback
 	@DisplayName("[SignUp] 정상 성공")
-	void signUpSuccess() throws Exception {
+	void signUpSuccess() {
 		//given
 		UserSignUpRequest request = SignUpRequestUtils.successRequest();
 
@@ -49,5 +51,23 @@ class UserSignUpTest extends ServiceTest {
 				assertThat(user.getHabits()).hasSize(request.getHabits().size());
 			}
 		);
+	}
+
+	@Test
+	@DisplayName("[SignUp] 중복 닉네임 실패")
+	void failByDuplicatedNickName() {
+		//given
+		UserSignUpRequest requestA = SignUpRequestUtils.successRequest();
+		UserSignUpRequest requestB = SignUpRequestUtils.successRequest();
+
+		//when
+		Long savedUserIdA = userSignUpService.signUpUser(requestA);
+
+		//then
+		assertThatThrownBy(
+			() -> userSignUpService.signUpUser(requestB))
+			.isInstanceOf(BusinessException.class)
+			.hasMessageContaining(ErrorCode.USER_DUPLICATED_NICKNAME.getMessage()
+			);
 	}
 }
