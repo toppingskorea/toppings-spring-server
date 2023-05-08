@@ -6,10 +6,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import kr.co.toppings.core.infrastructure.user.persistence.UserQueryRepository;
 import kr.co.toppings.core.infrastructure.user.persistence.UserUpdateRepository;
+import lombok.RequiredArgsConstructor;
 
 @SpringBootTest
 @Transactional
-public abstract class ServiceTest {
+public abstract class ServiceTestSupport {
 
 	@Autowired
 	protected UserQueryRepository userQueryRepository;
