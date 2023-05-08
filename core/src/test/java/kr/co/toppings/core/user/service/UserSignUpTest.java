@@ -17,7 +17,7 @@ import java.util.Optional;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
-@DisplayName("[UserSignUpTest - SpringBootTest]")
+@DisplayName("[User-SignUpTest] - SpringBootTest")
 class UserSignUpTest extends ServiceTest {
 
 	@Autowired
@@ -28,7 +28,7 @@ class UserSignUpTest extends ServiceTest {
 
 	@Test
 	@Rollback
-	@DisplayName("[회원가입] 정상 성공")
+	@DisplayName("[SignUp] 정상 성공")
 	void signUpSuccess() throws Exception {
 		//given
 		UserSignUpRequest request = SignUpRequestUtils.successRequest();

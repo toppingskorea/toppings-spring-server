@@ -1,5 +1,9 @@
 package kr.co.toppings.core.global.error;
 
+import static org.springframework.http.HttpStatus.*;
+
+import org.springframework.http.HttpStatus;
+
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
@@ -10,8 +14,11 @@ public enum ErrorCode {
 	// Common
 	INVALID_INPUT_VALUE("C001", "Invalid Input Value", 400),
 	INTERNAL_SERVER_ERROR("C002", "Server Error", 500),
-	METHOD_NOT_ALLOWED("C002", "지원하지 않은 HTTP Method 입니다.", 405)
-	;
+	METHOD_NOT_ALLOWED("C003", "지원하지 않은 HTTP Method 입니다.", 405),
+
+	// User
+	USER_INVALID_NICKNAME("U001", "닉네임 형식이 맞지 않습니다.", 400),
+	USER_DUPLICATED_NICKNAME("U002", "이미 존재하는 닉네임 입니다.", 409);
 
 	private final String code;
 	private final String message;
