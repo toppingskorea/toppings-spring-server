@@ -17,13 +17,14 @@ import org.hibernate.annotations.DynamicUpdate;
 
 import kr.co.toppings.core.global.entity.BaseEntity;
 import kr.co.toppings.core.global.error.BusinessException;
-import kr.co.toppings.core.global.error.ErrorCode;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
+@Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @EqualsAndHashCode(callSuper = true)
 @DynamicUpdate
@@ -69,7 +70,6 @@ public class Restaurant extends BaseEntity {
 		this.point = point;
 	}
 
-
 	/* static factory method */
 	public static Restaurant of(
 		final String name,
@@ -102,8 +102,14 @@ public class Restaurant extends BaseEntity {
 			throw new BusinessException(RESTAURANT_INVALID_NAME);
 	}
 
+	private void validateThumbnail(String thumbnail) {
+		if (!hasText(thumbnail))
+			throw new BusinessException(RESTAURANT_INVALID_THUMBNAIL);
+	}
+
 	/* business */
 	public void updateThumbnail(String thumbnail) {
+		validateThumbnail(thumbnail);
 		this.thumbnail = thumbnail;
 	}
 }

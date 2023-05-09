@@ -4,9 +4,11 @@ import javax.persistence.Embeddable;
 
 import lombok.AccessLevel;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Embeddable
+@Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class RestaurantPoint {
 
@@ -22,6 +24,7 @@ public class RestaurantPoint {
 		this.latitude = latitude;
 		this.longitude = longitude;
 	}
+
 	public static RestaurantPoint of(
 		final double latitude,
 		final double longitude

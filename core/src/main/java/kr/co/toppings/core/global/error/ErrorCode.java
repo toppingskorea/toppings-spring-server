@@ -23,7 +23,9 @@ public enum ErrorCode {
 	// Restaurant
 	RESTAURANT_INVALID_NAME("R001", "식당 이름이 올바르지 않습니다.", 400),
 	RESTAURANT_INVALID_ADDRESS("R002", "식당 주소가 올바르지 않습니다.", 400),
-	RESTAURANT_INVALID_CODE("R003", "식당 코드가 올바르지 않습니다.", 400)
+	RESTAURANT_INVALID_CODE("R003", "식당 코드가 올바르지 않습니다.", 400),
+	RESTAURANT_INVALID_CATEGORY("R004", "식당 카테고리가 올바르지 않습니다.", 400),
+	RESTAURANT_INVALID_THUMBNAIL("R004", "식당 썸네일이 올바르지 않습니다.", 400),
 
 	;
 	private final String code;

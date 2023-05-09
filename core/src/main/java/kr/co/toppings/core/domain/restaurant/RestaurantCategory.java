@@ -1,5 +1,9 @@
 package kr.co.toppings.core.domain.restaurant;
 
+import static kr.co.toppings.core.global.error.ErrorCode.*;
+
+import java.util.Objects;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -16,11 +20,14 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import kr.co.toppings.core.domain.restaurant.constants.FoodCategory;
+import kr.co.toppings.core.global.error.BusinessException;
 import lombok.AccessLevel;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
+@Getter
 @Table(name = "t_restaurant_category")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class RestaurantCategory {
@@ -44,10 +51,12 @@ public class RestaurantCategory {
 		final FoodCategory category,
 		final Restaurant restaurant
 	) {
+		validateCategory(category);
 		this.category = category;
 		this.restaurant = restaurant;
 	}
 
+	/* static factory method */
 	public static RestaurantCategory of(
 		final FoodCategory category,
 		final Restaurant restaurant
@@ -56,5 +65,11 @@ public class RestaurantCategory {
 			.category(category)
 			.restaurant(restaurant)
 			.build();
+	}
+
+	/* validation */
+	private void validateCategory(FoodCategory category) {
+		if (Objects.isNull(category))
+			throw new BusinessException(RESTAURANT_INVALID_CATEGORY);
 	}
 }
