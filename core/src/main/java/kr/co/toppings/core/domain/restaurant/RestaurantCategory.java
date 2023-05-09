@@ -12,6 +12,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import kr.co.toppings.core.domain.restaurant.constants.FoodCategory;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -31,6 +34,7 @@ public class RestaurantCategory {
 	@Column(name = "restaurant_category", columnDefinition = "varchar(50)")
 	private FoodCategory category;
 
+	@OnDelete(action = OnDeleteAction.CASCADE)
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "restaurant_id")
 	private Restaurant restaurant;

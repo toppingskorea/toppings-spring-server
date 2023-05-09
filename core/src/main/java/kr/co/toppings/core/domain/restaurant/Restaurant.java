@@ -1,16 +1,12 @@
 package kr.co.toppings.core.domain.restaurant;
 
-import java.util.List;
-
 import javax.persistence.AttributeOverride;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.DynamicInsert;
@@ -52,9 +48,6 @@ public class Restaurant extends BaseEntity {
 	@AttributeOverride(name = "longitude", column = @Column(name = "restaurant_longitude"))
 	private RestaurantPoint point;
 
-	@OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<RestaurantCategory> categories;
-
 	@Builder
 	private Restaurant(
 		String name,
@@ -81,5 +74,9 @@ public class Restaurant extends BaseEntity {
 			.code(code)
 			.point(RestaurantPoint.of(latitude, longitude))
 			.build();
+	}
+
+	public void updateThumbnail(String thumbnail) {
+		this.thumbnail = thumbnail;
 	}
 }
