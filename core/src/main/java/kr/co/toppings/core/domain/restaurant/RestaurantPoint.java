@@ -16,16 +16,15 @@ public class RestaurantPoint {
 
 	@Builder
 	private RestaurantPoint(
-		double latitude,
-		double longitude
+		final double latitude,
+		final double longitude
 	) {
 		this.latitude = latitude;
 		this.longitude = longitude;
 	}
-
 	public static RestaurantPoint of(
-		double latitude,
-		double longitude
+		final double latitude,
+		final double longitude
 	) {
 		return RestaurantPoint.builder()
 			.latitude(latitude)

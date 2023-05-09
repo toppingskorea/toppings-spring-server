@@ -41,16 +41,16 @@ public class RestaurantCategory {
 
 	@Builder
 	private RestaurantCategory(
-		FoodCategory category,
-		Restaurant restaurant
+		final FoodCategory category,
+		final Restaurant restaurant
 	) {
 		this.category = category;
 		this.restaurant = restaurant;
 	}
 
 	public static RestaurantCategory of(
-		FoodCategory category,
-		Restaurant restaurant
+		final FoodCategory category,
+		final Restaurant restaurant
 	) {
 		return RestaurantCategory.builder()
 			.category(category)

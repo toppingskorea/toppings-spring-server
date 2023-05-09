@@ -1,5 +1,8 @@
 package kr.co.toppings.core.domain.restaurant;
 
+import static kr.co.toppings.core.global.error.ErrorCode.*;
+import static org.springframework.util.StringUtils.*;
+
 import javax.persistence.AttributeOverride;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
@@ -13,6 +16,8 @@ import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
 import kr.co.toppings.core.global.entity.BaseEntity;
+import kr.co.toppings.core.global.error.BusinessException;
+import kr.co.toppings.core.global.error.ErrorCode;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -50,23 +55,28 @@ public class Restaurant extends BaseEntity {
 
 	@Builder
 	private Restaurant(
-		String name,
-		String address,
-		String code,
-		RestaurantPoint point
+		final String name,
+		final String address,
+		final String code,
+		final RestaurantPoint point
 	) {
+		validateName(name);
+		validateAddress(name);
+		validateCode(name);
 		this.name = name;
 		this.address = address;
 		this.code = code;
 		this.point = point;
 	}
 
+
+	/* static factory method */
 	public static Restaurant of(
-		String name,
-		String address,
-		String code,
-		double latitude,
-		double longitude
+		final String name,
+		final String address,
+		final String code,
+		final double latitude,
+		final double longitude
 	) {
 		return Restaurant.builder()
 			.name(name)
@@ -76,6 +86,23 @@ public class Restaurant extends BaseEntity {
 			.build();
 	}
 
+	/* validation */
+	private void validateCode(String code) {
+		if (!hasText(code))
+			throw new BusinessException(RESTAURANT_INVALID_CODE);
+	}
+
+	private void validateAddress(String address) {
+		if (!hasText(address))
+			throw new BusinessException(RESTAURANT_INVALID_ADDRESS);
+	}
+
+	private void validateName(String name) {
+		if (!hasText(name))
+			throw new BusinessException(RESTAURANT_INVALID_NAME);
+	}
+
+	/* business */
 	public void updateThumbnail(String thumbnail) {
 		this.thumbnail = thumbnail;
 	}
