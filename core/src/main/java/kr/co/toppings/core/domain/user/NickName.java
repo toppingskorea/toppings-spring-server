@@ -8,10 +8,7 @@ import java.util.regex.Pattern;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
-import kr.co.toppings.core.global.entity.BaseEntity;
 import kr.co.toppings.core.global.error.BusinessException;
-import kr.co.toppings.core.global.error.ErrorCode;
-import lombok.AccessLevel;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -31,10 +28,12 @@ public class NickName {
 	private String nickName;
 
 	public NickName(String nickName) {
+
 		validateNicknamePattern(nickName);
 		this.nickName = nickName;
 	}
 
+	//== 편의 메서드 [Pattern Validation Logic]==//
 	private void validateNicknamePattern(String nickName) {
 		if (isNotValidPattern(nickName)) {
 			log.warn("Invalid User name = {}", nickName);
