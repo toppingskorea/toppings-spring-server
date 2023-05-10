@@ -87,28 +87,28 @@ public class Restaurant extends BaseEntity {
 	}
 
 	/* validation */
-	private void validateCode(String code) {
+	private void validateCode(final String code) {
 		if (!hasText(code))
 			throw new BusinessException(RESTAURANT_INVALID_CODE);
 	}
 
-	private void validateAddress(String address) {
+	private void validateAddress(final String address) {
 		if (!hasText(address))
 			throw new BusinessException(RESTAURANT_INVALID_ADDRESS);
 	}
 
-	private void validateName(String name) {
+	private void validateName(final String name) {
 		if (!hasText(name))
 			throw new BusinessException(RESTAURANT_INVALID_NAME);
 	}
 
-	private void validateThumbnail(String thumbnail) {
+	private void validateThumbnail(final String thumbnail) {
 		if (!hasText(thumbnail))
 			throw new BusinessException(RESTAURANT_INVALID_THUMBNAIL);
 	}
 
 	/* business */
-	public void updateThumbnail(String thumbnail) {
+	public void updateThumbnail(final String thumbnail) {
 		validateThumbnail(thumbnail);
 		this.thumbnail = thumbnail;
 	}

@@ -68,7 +68,7 @@ public class RestaurantCategory {
 	}
 
 	/* validation */
-	private void validateCategory(FoodCategory category) {
+	private void validateCategory(final FoodCategory category) {
 		if (Objects.isNull(category))
 			throw new BusinessException(RESTAURANT_INVALID_CATEGORY);
 	}
