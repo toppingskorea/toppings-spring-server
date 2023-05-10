@@ -23,7 +23,7 @@ jobs:
         shell: bash
 
       - name: Test with Gradle
-        run: ./gradlew clean build
+        run: ./gradlew test
         shell: bash
 
       - name: Publish Test Results
