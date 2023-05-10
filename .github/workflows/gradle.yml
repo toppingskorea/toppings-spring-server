@@ -1,4 +1,4 @@
-name: 'Gradle Test CI'
+name: 'Gradle JUnit Test CI'
 
 on:
   pull_request:
