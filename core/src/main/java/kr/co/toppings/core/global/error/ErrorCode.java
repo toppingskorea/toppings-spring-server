@@ -19,8 +19,16 @@ public enum ErrorCode {
 
 	// User
 	USER_INVALID_NICKNAME("U001", "닉네임 형식이 맞지 않습니다.", 400),
-	USER_DUPLICATED_NICKNAME("U002", "이미 존재하는 닉네임 입니다.", 409);
+	USER_DUPLICATED_NICKNAME("U002", "이미 존재하는 닉네임 입니다.", 409),
 
+	// Restaurant
+	RESTAURANT_INVALID_NAME("R001", "식당 이름이 올바르지 않습니다.", 400),
+	RESTAURANT_INVALID_ADDRESS("R002", "식당 주소가 올바르지 않습니다.", 400),
+	RESTAURANT_INVALID_CODE("R003", "식당 코드가 올바르지 않습니다.", 400),
+	RESTAURANT_INVALID_CATEGORY("R004", "식당 카테고리가 올바르지 않습니다.", 400),
+	RESTAURANT_INVALID_THUMBNAIL("R005", "식당 썸네일이 올바르지 않습니다.", 400),
+
+	;
 	private final String code;
 	private final String message;
 	private final int status;
