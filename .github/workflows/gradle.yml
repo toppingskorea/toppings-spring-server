@@ -29,7 +29,7 @@ jobs:
         uses: EnricoMi/publish-unit-test-result-action@v2
         if: always()
         with:
-          junit_files: module-api/build/test-results/**/*.xml
+          junit_files: ./**/build/test-results/**/*.xml
 
       - name: Write Comment For Failed Test
         uses: mikepenz/action-junit-report@v3
@@ -38,12 +38,12 @@ jobs:
           report_paths: '**/build/test-results/test/TEST-*.xml'
           token: ${{ github.token }}
 
-      - name: Jacoco Coverage
-        id: jacoco
+      - name: Jacoco Coverage (core module)
+        id: jacoco-core
         uses: madrapps/jacoco-report@v1.2
         with:
-          title: 📝 테스트 커버리지 리포트입니다
+          title: 📝 Core module Test Coverage Report
           paths: ${{ github.workspace }}/core/build/reports/jacoco/test/jacocoTestReport.xml
           token: ${{ secrets.GITHUB_TOKEN }}
-          min-coverage-overall: 50
-          min-coverage-changed-files: 50
+          min-coverage-overall: 60
+          min-coverage-changed-files: 60
