@@ -20,7 +20,7 @@ import kr.co.toppings.core.infrastructure.user.persistence.UserQueryRepository;
 import kr.co.toppings.core.user.controller.utils.SignUpRequestUtils;
 
 @Rollback
-@DisplayName("[User-SignUpTest] - SpringBootTest")
+@DisplayName("[Service] - SignUp Test")
 class UserSignUpTest extends ServiceTestSupport {
 
 	@Autowired

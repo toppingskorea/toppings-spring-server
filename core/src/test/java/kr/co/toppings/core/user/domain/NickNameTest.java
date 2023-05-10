@@ -4,7 +4,6 @@ import static kr.co.toppings.core.global.error.ErrorCode.*;
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -12,7 +11,7 @@ import kr.co.toppings.core.domain.user.NickName;
 import kr.co.toppings.core.global.error.BusinessException;
 import kr.co.toppings.core.global.error.ErrorCode;
 
-@DisplayName("[User-NickNameTest] - Domain")
+@DisplayName("[Domain] - NickName Test")
 public class NickNameTest {
 
 	private static final String VALID_NICKNAME1 = "hbeeen";

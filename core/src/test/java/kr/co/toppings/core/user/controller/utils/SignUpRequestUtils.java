@@ -1,12 +1,6 @@
 package kr.co.toppings.core.user.controller.utils;
 
-import static kr.co.toppings.core.domain.user.constants.Habit.*;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import kr.co.toppings.core.application.user.dto.request.UserSignUpRequest;
-import kr.co.toppings.core.domain.user.constants.Habit;
 import kr.co.toppings.core.global.fixture.UserFixture;
 
 public abstract class SignUpRequestUtils {
@@ -14,7 +8,7 @@ public abstract class SignUpRequestUtils {
 
 	public static UserSignUpRequest successRequest() {
 		return new UserSignUpRequest(
-			a.getName(),
+			a.getNickName(),
 			a.getEmail(),
 			a.getCountry(),
 			a.getHabits()

@@ -9,8 +9,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+
+import javax.swing.*;
 
 @Getter
 @AllArgsConstructor
@@ -21,7 +22,7 @@ public enum UserFixture {
 	B("김당근", "hyeoshin@student.42seoul.kr", Country.KOREA, List.of(HALAL)),
 	C("김당근", "hyeoshin@student.42seoul.kr", Country.KOREA, new ArrayList<>());
 
-	private final String name;
+	private final String nickName;
 
 	private final String email;
 
@@ -32,7 +33,7 @@ public enum UserFixture {
 	public User toEntity() {
 		return User.createUser(
 			email,
-			name,
+			nickName,
 			country,
 			habits
 		);
