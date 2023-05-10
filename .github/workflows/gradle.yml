@@ -19,7 +19,6 @@ jobs:
 
       - name: Grant Execute permission for gradlew
         run: chmod +x gradlew
-        shell: bash
 
       - name: Test with Gradle
         run: ./gradlew clean test
