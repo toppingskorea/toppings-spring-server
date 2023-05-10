@@ -32,10 +32,6 @@ jobs:
         with:
           junit_files: ./**/build/test-results/**/*.xml
 
-      - name: Build with Gradle
-          run: ./gradlew build -x test
-          shell: bash
-
       - name: Jacoco Coverage (api module)
         id: jacoco-api
         uses: madrapps/jacoco-report@v1.2
