@@ -62,8 +62,8 @@ public class Restaurant extends BaseEntity {
 		final RestaurantPoint point
 	) {
 		validateName(name);
-		validateAddress(name);
-		validateCode(name);
+		validateAddress(address);
+		validateCode(code);
 		this.name = name;
 		this.address = address;
 		this.code = code;
