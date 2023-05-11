@@ -46,7 +46,7 @@ class UserSignUpTest extends ServiceTestSupport {
 				assertThat(user.getId()).isEqualTo(savedUserId);
 				assertThat(user.getNicknameValue()).isEqualTo(request.getNickName());
 				assertThat(user.getCountry()).isEqualTo(request.getCountry());
-				assertThat(user.getEmail()).isEqualTo(request.getEmail());
+				assertThat(user.getEmailValue()).isEqualTo(request.getEmail());
 				assertThat(user.getHabits()).hasSize(request.getHabits().size());
 			}
 		);

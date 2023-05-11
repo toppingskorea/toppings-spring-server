@@ -19,7 +19,7 @@ import lombok.extern.slf4j.Slf4j;
 @NoArgsConstructor(access = PROTECTED)
 @EqualsAndHashCode
 @Embeddable
-public class NickName {
+public class UserNickName {
 
 	private static final String NICKNAME_PATTERN = "^[a-z0-9]{6,20}$";
 	private static final Pattern NICKNAME_MATCHER = Pattern.compile(NICKNAME_PATTERN);
@@ -27,7 +27,7 @@ public class NickName {
 	@Column(name = "user_nickname", unique = true)
 	private String value;
 
-	public NickName(String value) {
+	public UserNickName(String value) {
 
 		validateNicknamePattern(value);
 		this.value = value;

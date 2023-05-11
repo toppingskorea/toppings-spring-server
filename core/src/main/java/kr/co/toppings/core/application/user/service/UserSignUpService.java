@@ -25,7 +25,7 @@ public class UserSignUpService {
 	@Transactional
 	public Long signUpUser(UserSignUpRequest request) {
 		User user = generateUser(request);
-		userValidator.validateNickNameIsNotDuplicated(user.getNickName());
+		userValidator.validateNickNameIsNotDuplicated(user.getUserNickName());
 		User saveUser = userUpdateRepository.save(user);
 		return saveUser.getId();
 	}
