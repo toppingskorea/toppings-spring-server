@@ -7,4 +7,6 @@ spring:
         - dev
       dev2:
         - dev2
+      test:
+        - test
     default: local
