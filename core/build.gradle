@@ -13,8 +13,6 @@ dependencies {
     implementation group: 'org.webjars', name: 'bootstrap', version: '5.1.3'
     implementation group: 'nz.net.ultraq.thymeleaf', name: 'thymeleaf-layout-dialect', version: '3.1.0'
     implementation 'org.springframework.boot:spring-boot-starter-websocket'
-    implementation 'org.flywaydb:flyway-core'
-    implementation 'org.flywaydb:flyway-mysql'
 
     implementation 'org.springframework.boot:spring-boot-starter-data-redis'
 
@@ -57,7 +55,7 @@ task copyPrivate(type: Copy) {
     copy {
         from '../toppings-server-config'
         include "application-*.yml"
-        into './src/main/resources'
+        into 'src/main/resources'
     }
 }
 

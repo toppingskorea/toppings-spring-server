@@ -11,8 +11,10 @@ import org.junit.jupiter.api.Test;
 import kr.co.toppings.core.domain.user.NickName;
 import kr.co.toppings.core.global.error.BusinessException;
 import kr.co.toppings.core.global.error.ErrorCode;
+import org.springframework.test.context.ActiveProfiles;
 
 @DisplayName("[User-NickNameTest] - Domain")
+@ActiveProfiles("test")
 public class NickNameTest {
 
 	private static final String VALID_NICKNAME1 = "hbeeen";

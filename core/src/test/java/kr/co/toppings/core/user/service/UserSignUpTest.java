@@ -18,9 +18,11 @@ import kr.co.toppings.core.global.error.BusinessException;
 import kr.co.toppings.core.global.error.ErrorCode;
 import kr.co.toppings.core.infrastructure.user.persistence.UserQueryRepository;
 import kr.co.toppings.core.user.controller.utils.SignUpRequestUtils;
+import org.springframework.test.context.ActiveProfiles;
 
 @Rollback
 @DisplayName("[User-SignUpTest] - SpringBootTest")
+@ActiveProfiles("test")
 class UserSignUpTest extends ServiceTestSupport {
 
 	@Autowired

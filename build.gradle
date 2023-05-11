@@ -68,6 +68,8 @@ subprojects {
         annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
         annotationProcessor 'org.projectlombok:lombok'
         runtimeOnly 'com.mysql:mysql-connector-j'
+        runtimeOnly 'com.h2database:h2'
+
         testCompileOnly 'org.projectlombok:lombok' // 테스트 의존성 추가
         testAnnotationProcessor 'org.projectlombok:lombok' // 테스트 의존성 추가
         testImplementation 'org.springframework.boot:spring-boot-starter-test'
@@ -81,7 +83,13 @@ subprojects {
         reports {
             xml.required = true
             csv.required = false
-            html.required = false
+            html.required = true
+        }
+
+        def Qdomains = []
+
+        for (qPattern in '**/QA'..'**/QZ') { // qPattern = '**/QA', '**/QB', ... '*.QZ'
+            Qdomains.add(qPattern + '*')
         }
 
         afterEvaluate {
@@ -91,8 +99,9 @@ subprojects {
                         '**/*Application*',
                         '**/*Exception*',
                         '**/dto/**',
-                        '**/config/**',
+                        '**/config/**'
                     ])
+                    fileTree(dir: it, excludes: [] + Qdomains)
                 })
             )
         }
