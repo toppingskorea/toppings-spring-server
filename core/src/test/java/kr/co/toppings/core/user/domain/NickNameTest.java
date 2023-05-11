@@ -54,9 +54,9 @@ public class NickNameTest {
 
 		//when, then
 		assertAll(
-			() -> assertThat(nickName1.getNickName()).isEqualTo(VALID_NICKNAME1),
-			() -> assertThat(nickName2.getNickName()).isEqualTo(VALID_NICKNAME2),
-			() -> assertThat(nickName3.getNickName()).isEqualTo(VALID_NICKNAME3)
+			() -> assertThat(nickName1.getValue()).isEqualTo(VALID_NICKNAME1),
+			() -> assertThat(nickName2.getValue()).isEqualTo(VALID_NICKNAME2),
+			() -> assertThat(nickName3.getValue()).isEqualTo(VALID_NICKNAME3)
 		);
 	}
 }

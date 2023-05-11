@@ -32,7 +32,7 @@ public class UserSignUpService {
 
 	private User generateUser(UserSignUpRequest request) {
 		return User.createUser(
-			request.getName(),
+			request.getNickName(),
 			request.getEmail(),
 			request.getCountry(),
 			request.getHabits()

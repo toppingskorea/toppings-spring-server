@@ -8,7 +8,6 @@ import java.util.Optional;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.annotation.Rollback;
 
 import kr.co.toppings.core.application.user.dto.request.UserSignUpRequest;
 import kr.co.toppings.core.application.user.service.UserSignUpService;
@@ -19,7 +18,6 @@ import kr.co.toppings.core.global.error.ErrorCode;
 import kr.co.toppings.core.infrastructure.user.persistence.UserQueryRepository;
 import kr.co.toppings.core.user.controller.utils.SignUpRequestUtils;
 
-@Rollback
 @DisplayName("[Service] - SignUp Test")
 class UserSignUpTest extends ServiceTestSupport {
 
@@ -46,6 +44,7 @@ class UserSignUpTest extends ServiceTestSupport {
 			() -> {
 				User user = result.orElseThrow();
 				assertThat(user.getId()).isEqualTo(savedUserId);
+				assertThat(user.getNicknameValue()).isEqualTo(request.getNickName());
 				assertThat(user.getCountry()).isEqualTo(request.getCountry());
 				assertThat(user.getEmail()).isEqualTo(request.getEmail());
 				assertThat(user.getHabits()).hasSize(request.getHabits().size());
