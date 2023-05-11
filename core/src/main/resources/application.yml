@@ -3,8 +3,11 @@ spring:
     group:
       test:
         - test
+        - aws
       local:
         - local
+        - aws
       dev:
         - dev
+        - aws
     default: local
