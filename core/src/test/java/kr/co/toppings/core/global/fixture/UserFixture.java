@@ -1,6 +1,10 @@
 package kr.co.toppings.core.global.fixture;
 
+import static kr.co.toppings.core.domain.user.constants.Country.*;
 import static kr.co.toppings.core.domain.user.constants.Habit.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import kr.co.toppings.core.domain.user.User;
 import kr.co.toppings.core.domain.user.constants.Country;
@@ -8,21 +12,16 @@ import kr.co.toppings.core.domain.user.constants.Habit;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.swing.*;
-
 @Getter
 @AllArgsConstructor
 public enum UserFixture {
 
 	// Valid User
-	A("hbeeen", "joker7011@naver.com", Country.KOREA, List.of(HALAL, NOSUGAR)),
-	B("김당근", "hyeoshin@student.42seoul.kr", Country.KOREA, List.of(HALAL)),
-	C("김당근", "hyeoshin@student.42seoul.kr", Country.KOREA, new ArrayList<>());
+	A("hbeeen", "joker7011@naver.com", KOREA, List.of(HALAL, NOSUGAR)),
+	B("hyeoshin", "hyeoshin@student.42seoul.kr", KOREA, List.of(HALAL)),
+	C("saelim", "saelim@student.42seoul.kr", KOREA, new ArrayList<>());
 
-	private final String nickName;
+	private final String userNickName;
 
 	private final String email;
 
@@ -32,8 +31,8 @@ public enum UserFixture {
 
 	public User toEntity() {
 		return User.createUser(
+			userNickName,
 			email,
-			nickName,
 			country,
 			habits
 		);

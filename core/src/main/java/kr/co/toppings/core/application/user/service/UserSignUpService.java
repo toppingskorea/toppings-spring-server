@@ -26,13 +26,14 @@ public class UserSignUpService {
 	public Long signUpUser(UserSignUpRequest request) {
 		User user = generateUser(request);
 		userValidator.validateNickNameIsNotDuplicated(user.getUserNickName());
+		userValidator.validateUserEmailIsNotDuplicated(user.getUserEmail());
 		User saveUser = userUpdateRepository.save(user);
 		return saveUser.getId();
 	}
 
 	private User generateUser(UserSignUpRequest request) {
 		return User.createUser(
-			request.getNickName(),
+			request.getUserNickName(),
 			request.getEmail(),
 			request.getCountry(),
 			request.getHabits()

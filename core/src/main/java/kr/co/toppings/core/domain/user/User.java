@@ -91,12 +91,12 @@ public class User extends BaseEntity {
 	}
 
 	public static User createUser(
-		String nickName,
+		String userNickName,
 		String email,
 		Country country,
 		List<Habit> habits
 	) {
-		return new User(new UserNickName(nickName), new UserEmail(email), country, habits);
+		return new User(new UserNickName(userNickName), new UserEmail(email), country, habits);
 	}
 
 	//==편의 Method==//
@@ -108,7 +108,7 @@ public class User extends BaseEntity {
 		return userNickName.getValue();
 	}
 
-	public String getEmailValue() {
+	public String getUserEmailValue() {
 		return userEmail.getValue();
 	}
 }

@@ -8,7 +8,16 @@ public abstract class SignUpRequestUtils {
 
 	public static UserSignUpRequest successRequest() {
 		return new UserSignUpRequest(
-			a.getNickName(),
+			a.getUserNickName(),
+			a.getEmail(),
+			a.getCountry(),
+			a.getHabits()
+		);
+	}
+
+	public static UserSignUpRequest successRequest2() {
+		return new UserSignUpRequest(
+			"hbyeon",
 			a.getEmail(),
 			a.getCountry(),
 			a.getHabits()
