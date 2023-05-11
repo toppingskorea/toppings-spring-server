@@ -19,29 +19,29 @@ import lombok.extern.slf4j.Slf4j;
 @NoArgsConstructor(access = PROTECTED)
 @EqualsAndHashCode
 @Embeddable
-public class NickName {
+public class UserNickName {
 
 	private static final String NICKNAME_PATTERN = "^[a-z0-9]{6,20}$";
 	private static final Pattern NICKNAME_MATCHER = Pattern.compile(NICKNAME_PATTERN);
 
 	@Column(name = "user_nickname", unique = true)
-	private String nickName;
+	private String value;
 
-	public NickName(String nickName) {
+	public UserNickName(String value) {
 
-		validateNicknamePattern(nickName);
-		this.nickName = nickName;
+		validateNicknamePattern(value);
+		this.value = value;
 	}
 
 	//== 편의 메서드 [Pattern Validation Logic]==//
-	private void validateNicknamePattern(String nickName) {
-		if (isNotValidPattern(nickName)) {
-			log.warn("Invalid User name = {}", nickName);
+	private void validateNicknamePattern(String value) {
+		if (isNotValidPattern(value)) {
+			log.warn("Invalid User name = {}", value);
 			throw new BusinessException(USER_INVALID_NICKNAME);
 		}
 	}
 
-	private static boolean isNotValidPattern(String nickName) {
-		return !NICKNAME_MATCHER.matcher(nickName).matches();
+	private static boolean isNotValidPattern(String value) {
+		return !NICKNAME_MATCHER.matcher(value).matches();
 	}
 }

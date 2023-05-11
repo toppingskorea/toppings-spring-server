@@ -4,16 +4,15 @@ import static kr.co.toppings.core.global.error.ErrorCode.*;
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import kr.co.toppings.core.domain.user.NickName;
+import kr.co.toppings.core.domain.user.UserNickName;
 import kr.co.toppings.core.global.error.BusinessException;
 import kr.co.toppings.core.global.error.ErrorCode;
 
-@DisplayName("[User-NickNameTest] - Domain")
-public class NickNameTest {
+@DisplayName("[Domain] - NickName Test")
+public class UserNickNameTest {
 
 	private static final String VALID_NICKNAME1 = "hbeeen";
 	private static final String VALID_NICKNAME2 = "hbeeenbackendmaster";
@@ -36,11 +35,11 @@ public class NickNameTest {
 
 		//when, then
 		assertAll(
-			() -> assertThatThrownBy(() -> new NickName(WRONG_NICKNAME1)).isInstanceOf(BusinessException.class)
+			() -> assertThatThrownBy(() -> new UserNickName(WRONG_NICKNAME1)).isInstanceOf(BusinessException.class)
 				.hasMessageContaining(expectedError.getMessage()),
-			() -> assertThatThrownBy(() -> new NickName(WRONG_NICKNAME2)).isInstanceOf(BusinessException.class)
+			() -> assertThatThrownBy(() -> new UserNickName(WRONG_NICKNAME2)).isInstanceOf(BusinessException.class)
 				.hasMessageContaining(expectedError.getMessage()),
-			() -> assertThatThrownBy(() -> new NickName(WRONG_NICKNAME3)).isInstanceOf(BusinessException.class)
+			() -> assertThatThrownBy(() -> new UserNickName(WRONG_NICKNAME3)).isInstanceOf(BusinessException.class)
 				.hasMessageContaining(expectedError.getMessage())
 		);
 	}
@@ -49,15 +48,15 @@ public class NickNameTest {
 	@DisplayName("[NickName] 적합 닉네임 성공 검증")
 	void validNickName() {
 		//given
-		NickName nickName1 = new NickName(VALID_NICKNAME1);
-		NickName nickName2 = new NickName(VALID_NICKNAME2);
-		NickName nickName3 = new NickName(VALID_NICKNAME3);
+		UserNickName userNickName1 = new UserNickName(VALID_NICKNAME1);
+		UserNickName userNickName2 = new UserNickName(VALID_NICKNAME2);
+		UserNickName userNickName3 = new UserNickName(VALID_NICKNAME3);
 
 		//when, then
 		assertAll(
-			() -> assertThat(nickName1.getNickName()).isEqualTo(VALID_NICKNAME1),
-			() -> assertThat(nickName2.getNickName()).isEqualTo(VALID_NICKNAME2),
-			() -> assertThat(nickName3.getNickName()).isEqualTo(VALID_NICKNAME3)
+			() -> assertThat(userNickName1.getValue()).isEqualTo(VALID_NICKNAME1),
+			() -> assertThat(userNickName2.getValue()).isEqualTo(VALID_NICKNAME2),
+			() -> assertThat(userNickName3.getValue()).isEqualTo(VALID_NICKNAME3)
 		);
 	}
 }

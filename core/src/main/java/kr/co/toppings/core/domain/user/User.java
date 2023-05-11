@@ -56,10 +56,10 @@ public class User extends BaseEntity {
 
 	// 사용자 닉네임
 	@Embedded
-	private NickName nickName;
+	private UserNickName userNickName;
 
-	@Column(name = "user_email", columnDefinition = "varchar(100)", unique = true)
-	private String email;
+	@Embedded
+	private UserEmail userEmail;
 
 	@Column(name = "user_country", columnDefinition = "varchar(100)")
 	@Enumerated(EnumType.STRING)
@@ -77,33 +77,38 @@ public class User extends BaseEntity {
 	@AttributeOverride(name = "path", column = @Column(name = "user_profile_path", columnDefinition = "varchar(200)"))
 	private Image profile;
 
-	@Column(name = "delete_yn", columnDefinition = "varchar(1) default 'N'")
-	private String deleteYn;
-
 	//==생성 Method==//
 	public User(
-		NickName nickName,
-		String email,
+		UserNickName userNickName,
+		UserEmail userEmail,
 		Country country,
 		List<Habit> habits
 	) {
-		this.nickName = nickName;
-		this.email = email;
+		this.userNickName = userNickName;
+		this.userEmail = userEmail;
 		this.country = country;
 		applyHabits(habits);
 	}
 
 	public static User createUser(
-		String nickName,
+		String userNickName,
 		String email,
 		Country country,
 		List<Habit> habits
 	) {
-		return new User(new NickName(nickName), email, country, habits);
+		return new User(new UserNickName(userNickName), new UserEmail(email), country, habits);
 	}
 
 	//==편의 Method==//
 	private void applyHabits(List<Habit> habitList) {
 		habitList.forEach(habit -> habits.add(createUserHabit(this, habit)));
+	}
+
+	public String getNicknameValue() {
+		return userNickName.getValue();
+	}
+
+	public String getUserEmailValue() {
+		return userEmail.getValue();
 	}
 }
