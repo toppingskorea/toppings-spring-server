@@ -83,7 +83,13 @@ subprojects {
         reports {
             xml.required = true
             csv.required = false
-            html.required = false
+            html.required = true
+        }
+
+        def Qdomains = []
+
+        for (qPattern in '**/QA'..'**/QZ') { // qPattern = '**/QA', '**/QB', ... '*.QZ'
+            Qdomains.add(qPattern + '*')
         }
 
         afterEvaluate {
@@ -93,8 +99,9 @@ subprojects {
                         '**/*Application*',
                         '**/*Exception*',
                         '**/dto/**',
-                        '**/config/**',
+                        '**/config/**'
                     ])
+                    fileTree(dir: it, excludes: [] + Qdomains)
                 })
             )
         }
