@@ -56,10 +56,10 @@ public class User extends BaseEntity {
 
 	// 사용자 닉네임
 	@Embedded
-	private UserNickName userNickName;
+	private UserNickName nickName;
 
 	@Embedded
-	private UserEmail userEmail;
+	private UserEmail email;
 
 	@Column(name = "user_country", columnDefinition = "varchar(100)")
 	@Enumerated(EnumType.STRING)
@@ -79,24 +79,24 @@ public class User extends BaseEntity {
 
 	//==생성 Method==//
 	public User(
-		UserNickName userNickName,
-		UserEmail userEmail,
+		UserNickName nickName,
+		UserEmail email,
 		Country country,
 		List<Habit> habits
 	) {
-		this.userNickName = userNickName;
-		this.userEmail = userEmail;
+		this.nickName = nickName;
+		this.email = email;
 		this.country = country;
 		applyHabits(habits);
 	}
 
 	public static User createUser(
-		String userNickName,
+		String nickName,
 		String email,
 		Country country,
 		List<Habit> habits
 	) {
-		return new User(new UserNickName(userNickName), new UserEmail(email), country, habits);
+		return new User(new UserNickName(nickName), new UserEmail(email), country, habits);
 	}
 
 	//==편의 Method==//
@@ -105,10 +105,10 @@ public class User extends BaseEntity {
 	}
 
 	public String getNicknameValue() {
-		return userNickName.getValue();
+		return nickName.getValue();
 	}
 
 	public String getUserEmailValue() {
-		return userEmail.getValue();
+		return email.getValue();
 	}
 }

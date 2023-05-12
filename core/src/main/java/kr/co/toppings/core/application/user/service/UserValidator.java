@@ -19,14 +19,14 @@ public class UserValidator {
 	private final UserQueryRepository userQueryRepository;
 
 	public void validateNickNameIsNotDuplicated(UserNickName userNickName) {
-		if(userQueryRepository.existsByUserNickName(userNickName)){
+		if(userQueryRepository.existsByNickName(userNickName)){
 			log.warn("duplicated NickName = {}", userNickName);
 			throw new BusinessException(USER_DUPLICATED_NICKNAME);
 		}
 	}
 
 	public void validateUserEmailIsNotDuplicated(UserEmail userEmail) {
-		if(userQueryRepository.existsByUserEmail(userEmail)){
+		if(userQueryRepository.existsByEmail(userEmail)){
 			log.warn("duplicated Email = {}", userEmail);
 			throw new BusinessException(USER_DUPLICATED_EMAIL);
 		}

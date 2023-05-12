@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = PRIVATE)
 @AllArgsConstructor
 public class UserSignUpRequest {
-    private String userNickName;
+    private String nickName;
     private String email;
     private Country country;
     private List<Habit> habits;

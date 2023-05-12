@@ -9,7 +9,7 @@ import kr.co.toppings.core.domain.user.UserEmail;
 import kr.co.toppings.core.domain.user.UserNickName;
 
 public interface UserJpaRepository extends JpaRepository<User, Long> {
-	Optional<User> findByUserEmail(UserEmail userEmail);
-	boolean existsByUserNickName(UserNickName userNickName);
-	boolean existsByUserEmail(UserEmail userEmail);
+	Optional<User> findByEmail(UserEmail email);
+	boolean existsByNickName(UserNickName nickName);
+	boolean existsByEmail(UserEmail email);
 }

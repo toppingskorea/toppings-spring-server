@@ -10,7 +10,7 @@ public class Notification {
 
 	private Long type;
 
-	@Builder.Default private String message = "";
+	private String message = "";
 
 	@Builder(builderMethodName = "typeBuilder")
 	public Notification(final Long type) {

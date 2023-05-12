@@ -9,7 +9,6 @@ import javax.persistence.Enumerated;
 
 @Getter
 @RequiredArgsConstructor
-@ToString
 public enum Habit {
     VEGAN("Vegan"),
     VEGETARIAN("Vegetarian"),
