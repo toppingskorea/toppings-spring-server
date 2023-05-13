@@ -52,8 +52,8 @@ public class Restaurant extends BaseEntity {
 	@Embedded
 	private RestaurantPoint point;
 
-	@Embedded
-	private RestaurantViews views;
+	@Column(name = "restaurant_views")
+	private long views;
 
 	@Builder
 	private Restaurant(
@@ -112,5 +112,9 @@ public class Restaurant extends BaseEntity {
 	public void updateThumbnail(final String thumbnail) {
 		validateThumbnail(thumbnail);
 		this.thumbnail = thumbnail;
+	}
+
+	public void upViews() {
+		this.views += 1;
 	}
 }

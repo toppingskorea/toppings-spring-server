@@ -28,7 +28,8 @@ public class RestaurantTest {
 			() -> assertThat(restaurant.getAddress()).isEqualTo(CREATE_SUCCESS.getAddress()),
 			() -> assertThat(restaurant.getCode()).isEqualTo(CREATE_SUCCESS.getCode()),
 			() -> assertThat(restaurant.getPoint().getLatitude()).isEqualTo(CREATE_SUCCESS.getLatitude()),
-			() -> assertThat(restaurant.getPoint().getLongitude()).isEqualTo(CREATE_SUCCESS.getLongitude())
+			() -> assertThat(restaurant.getPoint().getLongitude()).isEqualTo(CREATE_SUCCESS.getLongitude()),
+			() -> assertThat(restaurant.getViews()).isEqualTo(0)
 		);
 	}
 
@@ -83,5 +84,18 @@ public class RestaurantTest {
 		assertThatThrownBy(() -> restaurant.updateThumbnail(null))
 			.isInstanceOf(BusinessException.class)
 			.hasMessageContaining(RESTAURANT_INVALID_THUMBNAIL.getMessage());
+	}
+
+	@Test
+	@DisplayName("[Restaurant] - Up Restaurant views Test")
+	void 식당의_조회수를_증가시킨다() {
+		// given
+		final Restaurant restaurant = CREATE_SUCCESS.toEntity();
+
+		// when
+		restaurant.upViews();
+
+		// then
+		assertThat(restaurant.getViews()).isEqualTo(1);
 	}
 }
