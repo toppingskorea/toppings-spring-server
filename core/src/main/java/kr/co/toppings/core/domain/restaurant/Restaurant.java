@@ -50,9 +50,10 @@ public class Restaurant extends BaseEntity {
 	private String thumbnail;
 
 	@Embedded
-	@AttributeOverride(name = "latitude", column = @Column(name = "restaurant_latitude"))
-	@AttributeOverride(name = "longitude", column = @Column(name = "restaurant_longitude"))
 	private RestaurantPoint point;
+
+	@Embedded
+	private RestaurantViews views;
 
 	@Builder
 	private Restaurant(
