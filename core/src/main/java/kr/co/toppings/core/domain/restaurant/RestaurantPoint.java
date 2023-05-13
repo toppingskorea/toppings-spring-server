@@ -1,5 +1,6 @@
 package kr.co.toppings.core.domain.restaurant;
 
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 import lombok.AccessLevel;
@@ -12,8 +13,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class RestaurantPoint {
 
+	@Column(name = "restaurant_latitude")
 	private double latitude;
 
+	@Column(name = "restaurant_longitude")
 	private double longitude;
 
 	@Builder

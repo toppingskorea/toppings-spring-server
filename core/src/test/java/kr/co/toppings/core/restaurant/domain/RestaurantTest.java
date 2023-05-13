@@ -11,8 +11,6 @@ import org.springframework.test.context.ActiveProfiles;
 
 import kr.co.toppings.core.domain.restaurant.Restaurant;
 import kr.co.toppings.core.global.error.BusinessException;
-import kr.co.toppings.core.global.error.ErrorCode;
-import kr.co.toppings.core.global.fixture.RestaurantFixture;
 
 @DisplayName("[Domain] - Restaurant Test")
 @ActiveProfiles("test")
