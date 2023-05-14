@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
+import kr.co.toppings.core.infrastructure.user.persistence.UserJpaRepository;
 import kr.co.toppings.core.infrastructure.user.persistence.UserQueryRepository;
-import kr.co.toppings.core.infrastructure.user.persistence.UserUpdateRepository;
 import lombok.RequiredArgsConstructor;
 
 @SpringBootTest
@@ -16,5 +16,5 @@ public abstract class ServiceTestSupport {
 	protected UserQueryRepository userQueryRepository;
 
 	@Autowired
-	protected UserUpdateRepository userUpdateRepository;
+	protected UserJpaRepository userJpaRepository;
 }

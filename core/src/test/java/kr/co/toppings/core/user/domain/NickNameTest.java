@@ -4,7 +4,6 @@ import static kr.co.toppings.core.global.error.ErrorCode.*;
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -13,9 +12,9 @@ import kr.co.toppings.core.global.error.BusinessException;
 import kr.co.toppings.core.global.error.ErrorCode;
 import org.springframework.test.context.ActiveProfiles;
 
-@DisplayName("[User-NickNameTest] - Domain")
+@DisplayName("[Domain] - NickName Test")
 @ActiveProfiles("test")
-public class NickNameTest {
+class NickNameTest {
 
 	private static final String VALID_NICKNAME1 = "hbeeen";
 	private static final String VALID_NICKNAME2 = "hbeeenbackendmaster";
@@ -32,7 +31,7 @@ public class NickNameTest {
 
 	@Test
 	@DisplayName("[Nickname] 부적합 닉네임 실패 검증")
-	void invalidNickName() {
+	void 부적합한_닉네임으로_예외를_던진다() {
 		//given
 		ErrorCode expectedError = USER_INVALID_NICKNAME;
 
@@ -49,7 +48,7 @@ public class NickNameTest {
 
 	@Test
 	@DisplayName("[NickName] 적합 닉네임 성공 검증")
-	void validNickName() {
+	void 적합한_닉네임() {
 		//given
 		NickName nickName1 = new NickName(VALID_NICKNAME1);
 		NickName nickName2 = new NickName(VALID_NICKNAME2);
@@ -57,9 +56,9 @@ public class NickNameTest {
 
 		//when, then
 		assertAll(
-			() -> assertThat(nickName1.getNickName()).isEqualTo(VALID_NICKNAME1),
-			() -> assertThat(nickName2.getNickName()).isEqualTo(VALID_NICKNAME2),
-			() -> assertThat(nickName3.getNickName()).isEqualTo(VALID_NICKNAME3)
+			() -> assertThat(nickName1.getValue()).isEqualTo(VALID_NICKNAME1),
+			() -> assertThat(nickName2.getValue()).isEqualTo(VALID_NICKNAME2),
+			() -> assertThat(nickName3.getValue()).isEqualTo(VALID_NICKNAME3)
 		);
 	}
 }

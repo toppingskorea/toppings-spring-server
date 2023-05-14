@@ -58,8 +58,8 @@ public class User extends BaseEntity {
 	@Embedded
 	private NickName nickName;
 
-	@Column(name = "user_email", columnDefinition = "varchar(100)", unique = true)
-	private String email;
+	@Embedded
+	private Email email;
 
 	@Column(name = "user_country", columnDefinition = "varchar(100)")
 	@Enumerated(EnumType.STRING)
@@ -83,7 +83,7 @@ public class User extends BaseEntity {
 	//==생성 Method==//
 	public User(
 		NickName nickName,
-		String email,
+		Email email,
 		Country country,
 		List<Habit> habits
 	) {
@@ -99,7 +99,7 @@ public class User extends BaseEntity {
 		Country country,
 		List<Habit> habits
 	) {
-		return new User(new NickName(nickName), email, country, habits);
+		return new User(new NickName(nickName), new Email(email), country, habits);
 	}
 
 	//==편의 Method==//

@@ -6,6 +6,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 @RequiredArgsConstructor
 public class BaseUserRepository{
-
-	private final UserQueryRepository userQueryRepository;
+	private final UserJpaRepository userJpaRepository;
 }

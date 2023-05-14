@@ -1,9 +1,5 @@
 package kr.co.toppings.core.global.error;
 
-import static org.springframework.http.HttpStatus.*;
-
-import org.springframework.http.HttpStatus;
-
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
@@ -20,6 +16,8 @@ public enum ErrorCode {
 	// User
 	USER_INVALID_NICKNAME("U001", "닉네임 형식이 맞지 않습니다.", 400),
 	USER_DUPLICATED_NICKNAME("U002", "이미 존재하는 닉네임 입니다.", 409),
+	USER_INVALID_EMAIL("U003", "이메일 형식이 맞지 않습니다.", 400),
+	USER_DUPLICATED_EMAIL("U004", "이미 가입된 이메일 입니다.", 409),
 
 	// Restaurant
 	RESTAURANT_INVALID_NAME("R001", "식당 이름이 올바르지 않습니다.", 400),

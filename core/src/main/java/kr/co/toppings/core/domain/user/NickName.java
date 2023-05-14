@@ -25,23 +25,23 @@ public class NickName {
 	private static final Pattern NICKNAME_MATCHER = Pattern.compile(NICKNAME_PATTERN);
 
 	@Column(name = "user_nickname", unique = true)
-	private String nickName;
+	private String value;
 
-	public NickName(String nickName) {
+	public NickName(String value) {
 
-		validateNicknamePattern(nickName);
-		this.nickName = nickName;
+		validateNicknamePattern(value);
+		this.value = value;
 	}
 
 	//== 편의 메서드 [Pattern Validation Logic]==//
 	private void validateNicknamePattern(String nickName) {
-		if (isNotValidPattern(nickName)) {
+		if (isNotValidNickNamePattern(nickName)) {
 			log.warn("Invalid User name = {}", nickName);
 			throw new BusinessException(USER_INVALID_NICKNAME);
 		}
 	}
 
-	private static boolean isNotValidPattern(String nickName) {
+	private static boolean isNotValidNickNamePattern(String nickName) {
 		return !NICKNAME_MATCHER.matcher(nickName).matches();
 	}
 }
