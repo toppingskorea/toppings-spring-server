@@ -26,7 +26,6 @@ import lombok.NoArgsConstructor;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@EqualsAndHashCode(callSuper = true)
 @DynamicUpdate
 @DynamicInsert
 @Table(name = "t_restaurant")

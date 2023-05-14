@@ -24,7 +24,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 @Entity
-@EqualsAndHashCode(callSuper = true)
 @DynamicUpdate
 @DynamicInsert
 @Table(name = "t_saved_restaurant")
