@@ -1,16 +1,16 @@
 package kr.co.toppings.core.restaurant.domain;
 
-import static kr.co.toppings.core.global.error.ErrorCode.*;
-import static kr.co.toppings.core.global.fixture.RestaurantFixture.*;
-import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
-
+import kr.co.toppings.core.domain.restaurant.Restaurant;
+import kr.co.toppings.core.global.error.BusinessException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.test.context.ActiveProfiles;
 
-import kr.co.toppings.core.domain.restaurant.Restaurant;
-import kr.co.toppings.core.global.error.BusinessException;
+import static kr.co.toppings.core.global.error.ErrorCode.*;
+import static kr.co.toppings.core.global.fixture.RestaurantFixture.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 @DisplayName("[Domain] - Restaurant Test")
 @ActiveProfiles("test")
