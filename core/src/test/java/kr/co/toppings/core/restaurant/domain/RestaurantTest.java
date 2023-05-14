@@ -29,7 +29,7 @@ public class RestaurantTest {
 			() -> assertThat(restaurant.getCode()).isEqualTo(CREATE_SUCCESS.getCode()),
 			() -> assertThat(restaurant.getPoint().getLatitude()).isEqualTo(CREATE_SUCCESS.getLatitude()),
 			() -> assertThat(restaurant.getPoint().getLongitude()).isEqualTo(CREATE_SUCCESS.getLongitude()),
-			() -> assertThat(restaurant.getViews()).isEqualTo(0)
+			() -> assertThat(restaurant.getViews().getValue()).isEqualTo(0)
 		);
 	}
 
@@ -96,6 +96,6 @@ public class RestaurantTest {
 		restaurant.upViews();
 
 		// then
-		assertThat(restaurant.getViews()).isEqualTo(1);
+		assertThat(restaurant.getViews().getValue()).isEqualTo(1);
 	}
 }

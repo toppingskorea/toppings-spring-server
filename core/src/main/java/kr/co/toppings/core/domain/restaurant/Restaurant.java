@@ -51,8 +51,8 @@ public class Restaurant extends BaseEntity {
 	@Embedded
 	private RestaurantPoint point;
 
-	@Column(name = "restaurant_views")
-	private long views;
+	@Embedded
+	private RestaurantViews views;
 
 	@Builder
 	private Restaurant(
@@ -68,6 +68,7 @@ public class Restaurant extends BaseEntity {
 		this.address = address;
 		this.code = code;
 		this.point = point;
+		this.views = new RestaurantViews();
 	}
 
 	/* static factory method */
@@ -114,6 +115,6 @@ public class Restaurant extends BaseEntity {
 	}
 
 	public void upViews() {
-		this.views += 1;
+		views.upValue();
 	}
 }

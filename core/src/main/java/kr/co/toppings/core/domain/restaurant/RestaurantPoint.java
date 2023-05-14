@@ -3,10 +3,7 @@ package kr.co.toppings.core.domain.restaurant;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Embeddable
 @Getter
