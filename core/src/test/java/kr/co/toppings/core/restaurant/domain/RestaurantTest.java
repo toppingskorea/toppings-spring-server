@@ -1,18 +1,16 @@
 package kr.co.toppings.core.restaurant.domain;
 
-import static kr.co.toppings.core.global.error.ErrorCode.*;
-import static kr.co.toppings.core.global.fixture.RestaurantFixture.*;
-import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
-
+import kr.co.toppings.core.domain.restaurant.Restaurant;
+import kr.co.toppings.core.global.error.BusinessException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.test.context.ActiveProfiles;
 
-import kr.co.toppings.core.domain.restaurant.Restaurant;
-import kr.co.toppings.core.global.error.BusinessException;
-import kr.co.toppings.core.global.error.ErrorCode;
-import kr.co.toppings.core.global.fixture.RestaurantFixture;
+import static kr.co.toppings.core.global.error.ErrorCode.*;
+import static kr.co.toppings.core.global.fixture.RestaurantFixture.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 @DisplayName("[Domain] - Restaurant Test")
 @ActiveProfiles("test")
@@ -30,7 +28,8 @@ public class RestaurantTest {
 			() -> assertThat(restaurant.getAddress()).isEqualTo(CREATE_SUCCESS.getAddress()),
 			() -> assertThat(restaurant.getCode()).isEqualTo(CREATE_SUCCESS.getCode()),
 			() -> assertThat(restaurant.getPoint().getLatitude()).isEqualTo(CREATE_SUCCESS.getLatitude()),
-			() -> assertThat(restaurant.getPoint().getLongitude()).isEqualTo(CREATE_SUCCESS.getLongitude())
+			() -> assertThat(restaurant.getPoint().getLongitude()).isEqualTo(CREATE_SUCCESS.getLongitude()),
+			() -> assertThat(restaurant.getViews().getValue()).isEqualTo(0)
 		);
 	}
 
@@ -85,5 +84,18 @@ public class RestaurantTest {
 		assertThatThrownBy(() -> restaurant.updateThumbnail(null))
 			.isInstanceOf(BusinessException.class)
 			.hasMessageContaining(RESTAURANT_INVALID_THUMBNAIL.getMessage());
+	}
+
+	@Test
+	@DisplayName("[Restaurant] - Up Restaurant views Test")
+	void 식당의_조회수를_증가시킨다() {
+		// given
+		final Restaurant restaurant = CREATE_SUCCESS.toEntity();
+
+		// when
+		restaurant.upViews();
+
+		// then
+		assertThat(restaurant.getViews().getValue()).isEqualTo(1);
 	}
 }

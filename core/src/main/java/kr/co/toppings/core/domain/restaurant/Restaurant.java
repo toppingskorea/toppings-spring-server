@@ -1,32 +1,22 @@
 package kr.co.toppings.core.domain.restaurant;
 
-import static kr.co.toppings.core.global.error.ErrorCode.*;
-import static org.springframework.util.StringUtils.*;
-
-import javax.persistence.AttributeOverride;
-import javax.persistence.Column;
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-import org.hibernate.annotations.DynamicInsert;
-import org.hibernate.annotations.DynamicUpdate;
-
 import kr.co.toppings.core.global.entity.BaseEntity;
 import kr.co.toppings.core.global.error.BusinessException;
 import lombok.AccessLevel;
 import lombok.Builder;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
+
+import javax.persistence.*;
+
+import static kr.co.toppings.core.global.error.ErrorCode.*;
+import static org.springframework.util.StringUtils.hasText;
 
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@EqualsAndHashCode(callSuper = true)
 @DynamicUpdate
 @DynamicInsert
 @Table(name = "t_restaurant")
@@ -50,9 +40,10 @@ public class Restaurant extends BaseEntity {
 	private String thumbnail;
 
 	@Embedded
-	@AttributeOverride(name = "latitude", column = @Column(name = "restaurant_latitude"))
-	@AttributeOverride(name = "longitude", column = @Column(name = "restaurant_longitude"))
 	private RestaurantPoint point;
+
+	@Embedded
+	private RestaurantViews views;
 
 	@Builder
 	private Restaurant(
@@ -68,6 +59,7 @@ public class Restaurant extends BaseEntity {
 		this.address = address;
 		this.code = code;
 		this.point = point;
+		this.views = new RestaurantViews();
 	}
 
 	/* static factory method */
@@ -111,5 +103,9 @@ public class Restaurant extends BaseEntity {
 	public void updateThumbnail(final String thumbnail) {
 		validateThumbnail(thumbnail);
 		this.thumbnail = thumbnail;
+	}
+
+	public void upViews() {
+		views.upValue();
 	}
 }
