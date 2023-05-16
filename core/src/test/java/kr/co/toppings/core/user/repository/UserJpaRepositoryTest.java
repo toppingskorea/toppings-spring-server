@@ -4,7 +4,6 @@ import static kr.co.toppings.core.global.fixture.UserFixture.*;
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -15,9 +14,9 @@ import kr.co.toppings.core.domain.user.User;
 import kr.co.toppings.core.global.base.RepositoryTestSupport;
 import kr.co.toppings.core.infrastructure.user.persistence.UserJpaRepository;
 
-@DisplayName("[Repository] - User Test")
+@DisplayName("[Repository] - UserJpaRepository Test")
 @ActiveProfiles("test")
-class UserRepositoryTest extends RepositoryTestSupport {
+class UserJpaRepositoryTest extends RepositoryTestSupport {
 
 	@Autowired
 	UserJpaRepository userJpaRepository;
@@ -38,7 +37,7 @@ class UserRepositoryTest extends RepositoryTestSupport {
 	}
 
 	@Test
-	@DisplayName("[UserRepository] 사용자 저장 테스트")
+	@DisplayName("[UserJpaRepository] 사용자 저장 테스트")
 	void 회원_저장_테스트() {
 		//given
 		User findUserA = userQueryRepository.findById(userA.getId()).get();
