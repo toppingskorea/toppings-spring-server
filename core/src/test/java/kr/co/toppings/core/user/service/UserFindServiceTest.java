@@ -26,7 +26,7 @@ class UserFindServiceTest extends ServiceTestSupport {
 	@DisplayName("[UserFind] 정상 성공")
 	void 아이디_유저_조회_성공() {
 	    //given
-		User validUserA = CREATE_SUCCESS_2HABITS.toEntity();
+		User validUserA = CREATE_SUCCESS_2HABIT.toEntity();
 		userJpaRepository.save(validUserA);
 	    //when
 		User result = userFindService.findByUserId(validUserA.getId());

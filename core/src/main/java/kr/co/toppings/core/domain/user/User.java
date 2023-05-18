@@ -106,4 +106,12 @@ public class User extends BaseEntity {
 	private void applyHabits(List<Habit> habitList) {
 		habitList.forEach(habit -> habits.add(createUserHabit(this, habit)));
 	}
+
+	public String getNickNameValue() {
+		return nickName.getValue();
+	}
+
+	public String getEmailValue() {
+		return email.getValue();
+	}
 }

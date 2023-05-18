@@ -25,10 +25,14 @@ public class UserSignUpService {
 	@Transactional
 	public Long signUpUser(UserSignUpRequest request) {
 		User user = generateUser(request);
-		userValidator.validateNickNameIsNotDuplicated(user.getNickName());
-		userValidator.validateEmailIsNotDuplicated(user.getEmail());
+		validateUser(user);
 		User saveUser = userJpaRepository.save(user);
 		return saveUser.getId();
+	}
+
+	private void validateUser(User user) {
+		userValidator.validateNickNameIsNotDuplicated(user.getNickName());
+		userValidator.validateEmailIsNotDuplicated(user.getEmail());
 	}
 
 	private User generateUser(UserSignUpRequest request) {

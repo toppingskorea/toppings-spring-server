@@ -2,8 +2,9 @@ package kr.co.toppings.core.application.user.facade;
 
 import org.springframework.stereotype.Service;
 
+import kr.co.toppings.core.application.user.service.UserDeleteService;
 import kr.co.toppings.core.application.user.service.UserFindService;
-import kr.co.toppings.core.application.user.service.UserModifyService;
+import kr.co.toppings.core.application.user.service.UserUpateService;
 import kr.co.toppings.core.application.user.service.UserSignUpService;
 import kr.co.toppings.core.application.user.service.UserValidator;
 import lombok.AllArgsConstructor;
@@ -14,5 +15,6 @@ public class UserServiceFacade {
 	private final UserValidator userValidator;
 	private final UserFindService userFindService;
 	private final UserSignUpService userSignUpService;
-	private final UserModifyService userModifyService;
+	private final UserUpateService userUpateService;
+	private final UserDeleteService userDeleteService;
 }
