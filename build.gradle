@@ -99,7 +99,8 @@ subprojects {
                         '**/*Application*',
                         '**/*Exception*',
                         '**/dto/**',
-                        '**/config/**'
+                        '**/config/**',
+                        '**/global/**'
                     ])
                     fileTree(dir: it, excludes: [] + Qdomains)
                 })
