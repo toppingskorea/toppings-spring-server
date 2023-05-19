@@ -11,7 +11,8 @@ import java.util.*;
 @MappedSuperclass
 public abstract class BaseAggregateRoot extends BaseEntity {
 
-    private final @Transient List<Object> domainEvents = new ArrayList<>();
+    @Transient
+    private final List<Object> domainEvents = new ArrayList<>();
 
     protected void registerEvent(@NotNull Object event) {
         domainEvents.add(Objects.requireNonNull(event));
