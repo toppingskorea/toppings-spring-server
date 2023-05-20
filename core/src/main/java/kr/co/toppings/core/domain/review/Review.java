@@ -1,7 +1,10 @@
 package kr.co.toppings.core.domain.review;
 
+import static org.springframework.util.StringUtils.*;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -18,23 +21,23 @@ import javax.persistence.Table;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
+import kr.co.toppings.core.domain.common.entity.BaseAggregateRoot;
 import kr.co.toppings.core.domain.restaurant.Restaurant;
 import kr.co.toppings.core.domain.user.User;
-import kr.co.toppings.core.global.entity.BaseEntity;
-import lombok.AllArgsConstructor;
+import kr.co.toppings.core.global.error.BusinessException;
+import kr.co.toppings.core.global.error.ErrorCode;
+import lombok.AccessLevel;
 import lombok.Builder;
-import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
+@Getter
 @Entity
-@EqualsAndHashCode(callSuper = true)
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @DynamicUpdate
 @DynamicInsert
 @Table(name = "t_review")
-public class Review extends BaseEntity {
+public class Review extends BaseAggregateRoot {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -52,9 +55,61 @@ public class Review extends BaseEntity {
 	@Column(name = "review_content", columnDefinition = "text")
 	private String content;
 
-	@OneToMany(mappedBy = "review", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "review", cascade = CascadeType.REMOVE, orphanRemoval = true)
 	private List<ReviewImage> images = new ArrayList<>();
 
-	@Column(name = "public_yn", columnDefinition = "varchar(1) default 'P'")
-	private String publicYn;
+	@Builder
+	private Review(
+		final Restaurant restaurant,
+		final User user,
+		final String content
+	) {
+		validateRestaurant(restaurant);
+		validateUser(user);
+		validateContent(content);
+		this.restaurant = restaurant;
+		this.user = user;
+		this.content = content;
+	}
+
+	/* static factory method */
+	public static Review of(
+		final Restaurant restaurant,
+		final User user,
+		final String content
+	) {
+		return Review.builder()
+			.restaurant(restaurant)
+			.user(user)
+			.content(content)
+			.build();
+	}
+
+	/* validation */
+	public void validateRestaurant(final Restaurant restaurant) {
+		if (Objects.isNull(restaurant))
+			throw new BusinessException(ErrorCode.REVIEW_INVALID_RESTAURANT);
+	}
+
+	public void validateUser(final User user) {
+		if (Objects.isNull(user))
+			throw new BusinessException(ErrorCode.REVIEW_INVALID_USER);
+	}
+
+	public void validateContent(final String content) {
+		if (!hasText(content))
+			throw new BusinessException(ErrorCode.REVIEW_INVALID_CONTENT);
+	}
+
+	public void validateReviewImage(final ReviewImage image) {
+		if (Objects.isNull(image))
+			throw new BusinessException(ErrorCode.REVIEW_INVALID_IMAGE);
+	}
+
+	/* business */
+	public void addImage(final ReviewImage image) {
+		validateReviewImage(image);
+		this.images.add(image);
+		// TODO: add image event
+	}
 }

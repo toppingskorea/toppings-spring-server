@@ -1,7 +1,6 @@
 package kr.co.toppings.core.domain.restaurant;
 
-import kr.co.toppings.core.global.entity.BaseAggregateRoot;
-import kr.co.toppings.core.global.entity.BaseEntity;
+import kr.co.toppings.core.domain.common.entity.BaseAggregateRoot;
 import kr.co.toppings.core.global.error.BusinessException;
 import lombok.AccessLevel;
 import lombok.Builder;

@@ -2,7 +2,6 @@ package kr.co.toppings.core.domain.user;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -11,16 +10,13 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import kr.co.toppings.core.domain.user.constants.Habit;
-import kr.co.toppings.core.global.entity.BaseEntity;
+import kr.co.toppings.core.domain.common.entity.BaseEntity;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static javax.persistence.EnumType.STRING;
 import static javax.persistence.FetchType.LAZY;
