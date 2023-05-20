@@ -26,6 +26,17 @@ public enum ErrorCode {
 	RESTAURANT_INVALID_CATEGORY("R004", "식당 카테고리가 올바르지 않습니다.", 400),
 	RESTAURANT_INVALID_THUMBNAIL("R005", "식당 썸네일이 올바르지 않습니다.", 400),
 
+	// Image
+	IMAGE_INVALID_URL("IMG001", "이미지 URL이 올바르지 않습니다.", 400),
+	IMAGE_INVALID_PATH("IMG002", "이미지 경로가 올바르지 않습니다.", 400),
+
+	// Review
+	REVIEW_INVALID_VALUE("REV001", "리뷰 정보가 올바르지 않습니다.", 400),
+	REVIEW_INVALID_RESTAURANT("REV002", "리뷰 식당 정보가 올바르지 않습니다.", 400),
+	REVIEW_INVALID_USER("REV003", "리뷰 유저 정보가 올바르지 않습니다.", 400),
+	REVIEW_INVALID_CONTENT("REV004", "리뷰 내용이 올바르지 않습니다.", 400),
+	REVIEW_INVALID_IMAGE("REV005", "리뷰 이미지가 올바르지 않습니다.", 400),
+
 	;
 	private final String code;
 	private final String message;
