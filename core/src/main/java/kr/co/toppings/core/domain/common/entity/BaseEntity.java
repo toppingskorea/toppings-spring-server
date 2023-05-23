@@ -17,7 +17,7 @@ import lombok.Getter;
 @Getter
 @EntityListeners(value = AuditingEntityListener.class)
 @MappedSuperclass
-public class BaseEntity {
+public abstract class BaseEntity {
 
 	@Column(
 		nullable = false,
