@@ -12,11 +12,11 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-import lombok.Data;
+import lombok.Getter;
 
-@Data
-@MappedSuperclass
+@Getter
 @EntityListeners(value = AuditingEntityListener.class)
+@MappedSuperclass
 public class BaseEntity {
 
 	@Column(
