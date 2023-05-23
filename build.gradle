@@ -100,7 +100,6 @@ subprojects {
                         '**/*Application*',
                         '**/*Exception*',
                         '**/dto/**',
-                        '**/common/**',
                         '**/config/**',
                     ] + Qdomains)
                 })
