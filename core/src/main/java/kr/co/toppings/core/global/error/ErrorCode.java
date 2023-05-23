@@ -36,6 +36,7 @@ public enum ErrorCode {
 	REVIEW_INVALID_USER("REV003", "리뷰 유저 정보가 올바르지 않습니다.", 400),
 	REVIEW_INVALID_CONTENT("REV004", "리뷰 내용이 올바르지 않습니다.", 400),
 	REVIEW_INVALID_IMAGE("REV005", "리뷰 이미지가 올바르지 않습니다.", 400),
+	REVIEW_INVALID_STAR_VALUE("REV006", "리뷰 평점 값이 올바르지 않습니다.", 400),
 
 	;
 	private final String code;
