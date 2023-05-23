@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 public class RestaurantTest {
 
 	@Test
-	@DisplayName("[Restaurant] - Create Restaurant Test")
+	@DisplayName("[Restaurant] - 식당을 생성한다")
 	void 식당을_생성한다() {
 		// given
 		final Restaurant restaurant = CREATE_SUCCESS.toEntity();
@@ -34,7 +34,7 @@ public class RestaurantTest {
 	}
 
 	@Test
-	@DisplayName("[Restaurant] - Invalid Restaurant Name Test")
+	@DisplayName("[Restaurant] - 식당을 생성할때 이름 검증을 실패하면 예외를 던진다")
 	void 식당을_생성할때_이름_검증을_실패하면_예외를_던진다() {
 		// given & when & then
 		assertThatThrownBy(CREATE_FAIL_BY_NAME::toEntity)
@@ -43,7 +43,7 @@ public class RestaurantTest {
 	}
 
 	@Test
-	@DisplayName("[Restaurant] - Invalid Restaurant Address Test")
+	@DisplayName("[Restaurant] - 식당을 생성할때 주소 검증을 실패하면 예외를 던진다")
 	void 식당을_생성할때_주소_검증을_실패하면_예외를_던진다() {
 		// given & when & then
 		assertThatThrownBy(CREATE_FAIL_BY_ADDRESS::toEntity)
@@ -52,7 +52,7 @@ public class RestaurantTest {
 	}
 
 	@Test
-	@DisplayName("[Restaurant] - Invalid Restaurant Code Test")
+	@DisplayName("[Restaurant] - 식당을 생성할때 코드 검증을 실패하면 예외를 던진다")
 	void 식당을_생성할때_코드_검증을_실패하면_예외를_던진다() {
 		// given & when & then
 		assertThatThrownBy(CREATE_FAIL_BY_CODE::toEntity)
@@ -61,7 +61,7 @@ public class RestaurantTest {
 	}
 
 	@Test
-	@DisplayName("[Restaurant] - Update Restaurant Thumbnail Test")
+	@DisplayName("[Restaurant] - 식당의 썸네일을 업데이트 한다")
 	void 식당의_썸네일을_업데이트_한다() {
 		// given
 		final String validThumbnail = "Some Thumbnail Url";
@@ -75,7 +75,7 @@ public class RestaurantTest {
 	}
 
 	@Test
-	@DisplayName("[Restaurant] - Invalid Restaurant Thumbnail Test")
+	@DisplayName("[Restaurant] - 식당의 썸네일을 업데이트 할 때 검증을 실패하면 예외를 던진다")
 	void 식당의_썸네일을_업데이트할때_검증을_실패하면_예외를_던진다() {
 		// given
 		final Restaurant restaurant = CREATE_SUCCESS.toEntity();
@@ -87,7 +87,7 @@ public class RestaurantTest {
 	}
 
 	@Test
-	@DisplayName("[Restaurant] - Up Restaurant views Test")
+	@DisplayName("[Restaurant] - 식당의 조회수를 증가시킨다")
 	void 식당의_조회수를_증가시킨다() {
 		// given
 		final Restaurant restaurant = CREATE_SUCCESS.toEntity();
