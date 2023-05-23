@@ -8,9 +8,11 @@ import kr.co.toppings.core.global.error.BusinessException;
 import kr.co.toppings.core.global.error.ErrorCode;
 import lombok.AccessLevel;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Embeddable
+@Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Image {
 

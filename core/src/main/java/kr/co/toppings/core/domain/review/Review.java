@@ -8,6 +8,7 @@ import java.util.Objects;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -55,14 +56,18 @@ public class Review extends BaseAggregateRoot {
 	@Column(name = "review_content", columnDefinition = "text")
 	private String content;
 
+	@Embedded
+	private ReviewStar star;
+
 	@OneToMany(mappedBy = "review", cascade = CascadeType.REMOVE, orphanRemoval = true)
-	private List<ReviewImage> images = new ArrayList<>();
+	private List<ReviewImage> images;
 
 	@Builder
 	private Review(
 		final Restaurant restaurant,
 		final User user,
-		final String content
+		final String content,
+		final ReviewStar star
 	) {
 		validateRestaurant(restaurant);
 		validateUser(user);
@@ -70,38 +75,42 @@ public class Review extends BaseAggregateRoot {
 		this.restaurant = restaurant;
 		this.user = user;
 		this.content = content;
+		this.star = star;
+		this.images = new ArrayList<>();
 	}
 
 	/* static factory method */
 	public static Review of(
 		final Restaurant restaurant,
 		final User user,
-		final String content
+		final String content,
+		final int starValue
 	) {
 		return Review.builder()
 			.restaurant(restaurant)
 			.user(user)
 			.content(content)
+			.star(ReviewStar.of(starValue))
 			.build();
 	}
 
 	/* validation */
-	public void validateRestaurant(final Restaurant restaurant) {
+	private void validateRestaurant(final Restaurant restaurant) {
 		if (Objects.isNull(restaurant))
 			throw new BusinessException(ErrorCode.REVIEW_INVALID_RESTAURANT);
 	}
 
-	public void validateUser(final User user) {
+	private void validateUser(final User user) {
 		if (Objects.isNull(user))
 			throw new BusinessException(ErrorCode.REVIEW_INVALID_USER);
 	}
 
-	public void validateContent(final String content) {
+	private void validateContent(final String content) {
 		if (!hasText(content))
 			throw new BusinessException(ErrorCode.REVIEW_INVALID_CONTENT);
 	}
 
-	public void validateReviewImage(final ReviewImage image) {
+	private void validateReviewImage(final ReviewImage image) {
 		if (Objects.isNull(image))
 			throw new BusinessException(ErrorCode.REVIEW_INVALID_IMAGE);
 	}
@@ -110,6 +119,6 @@ public class Review extends BaseAggregateRoot {
 	public void addImage(final ReviewImage image) {
 		validateReviewImage(image);
 		this.images.add(image);
-		// TODO: add image event
+		// TODO: add image event and test event
 	}
 }
