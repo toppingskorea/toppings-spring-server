@@ -68,8 +68,17 @@ public class ReviewImage {
 	}
 
 	/* validation */
-	public void validateReview(final Review review) {
+	private void validateReview(final Review review) {
 		if (Objects.isNull(review))
 			throw new BusinessException(ErrorCode.REVIEW_INVALID_VALUE);
+	}
+
+	/* business */
+	public String getImageUrl() {
+		return this.image.getUrl();
+	}
+
+	public String getImagePath() {
+		return this.image.getPath();
 	}
 }
