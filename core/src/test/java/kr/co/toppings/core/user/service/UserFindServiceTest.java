@@ -7,15 +7,13 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ActiveProfiles;
 
 import kr.co.toppings.core.application.user.service.UserFindService;
 import kr.co.toppings.core.domain.user.User;
 import kr.co.toppings.core.global.base.ServiceTestSupport;
 
-@Rollback
-@DisplayName("[SpringBootTest] - UserFind Test")
+@DisplayName("[SpringBoot] - UserFind Test")
 @ActiveProfiles("test")
 class UserFindServiceTest extends ServiceTestSupport {
 

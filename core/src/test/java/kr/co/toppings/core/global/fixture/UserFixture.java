@@ -20,6 +20,7 @@ public enum UserFixture {
 	CREATE_SUCCESS_2HABIT("hbeeen", "joker7011@naver.com", KOREA, List.of(HALAL, NOSUGAR)),
 	CREATE_SUCCESS_1HABIT("kgnkgn", "hbyeon@student.42seoul.kr", KOREA, List.of(HALAL)),
 	CREATE_SUCCESS_0HABIT("backendmaster", "been2spring@gmail.com", JAPAN, new ArrayList<>()),
+	CREATE_SUCCESS_4HABIT("change", "joker7011@naver.com", JAPAN, List.of(BUDDHISM, HINDUISM, VEGAN, MUSLIMFRIENDLY)),
 	CREATE_FAIL_BY_NICKNAME("short", "onlyinvalidnickname@naver.com", KOREA, new ArrayList<>()),
 	CREATE_FAIL_BY_EMAIL("twodots", "onlyinvalidnickname@naver..", JAPAN, new ArrayList<>());
 

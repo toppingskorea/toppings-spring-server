@@ -77,9 +77,6 @@ public class User extends BaseEntity {
 	@AttributeOverride(name = "path", column = @Column(name = "user_profile_path", columnDefinition = "varchar(200)"))
 	private Image profile;
 
-	@Column(name = "delete_yn", columnDefinition = "varchar(1) default 'N'")
-	private String deleteYn;
-
 	//==생성 Method==//
 	public User(
 		NickName nickName,
@@ -113,5 +110,19 @@ public class User extends BaseEntity {
 
 	public String getEmailValue() {
 		return email.getValue();
+	}
+
+	public void updateNickName(NickName nickName) {
+		this.nickName = nickName;
+	}
+
+	public void updateCountry(Country country) {
+		this.country = country;
+	}
+
+	public void updateHabits(List<Habit> habitList) {
+		// 기존 HabitList 비우기
+		habits.clear();
+		habitList.forEach(habit -> habits.add(createUserHabit(this, habit)));
 	}
 }

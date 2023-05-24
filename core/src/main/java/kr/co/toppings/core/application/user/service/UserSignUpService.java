@@ -19,7 +19,6 @@ import lombok.RequiredArgsConstructor;
 public class UserSignUpService {
 
 	private final UserValidator userValidator;
-
 	private final UserJpaRepository userJpaRepository;
 
 	@Transactional

@@ -9,7 +9,6 @@ import java.util.Optional;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ActiveProfiles;
 
 import kr.co.toppings.core.application.user.dto.request.UserSignUpRequest;
@@ -19,7 +18,6 @@ import kr.co.toppings.core.global.base.ServiceTestSupport;
 import kr.co.toppings.core.global.error.BusinessException;
 import kr.co.toppings.core.user.controller.utils.SignUpRequestUtils;
 
-@Rollback
 @DisplayName("[SpringBoot] - UserSignUp Test")
 @ActiveProfiles("test")
 class UserSignUpTest extends ServiceTestSupport {
@@ -28,7 +26,7 @@ class UserSignUpTest extends ServiceTestSupport {
 	private UserSignUpService userSignUpService;
 
 	@Test
-	@DisplayName("[SignUp] 정상 성공")
+	@DisplayName("[UserSignUp] 정상 성공")
 	void 회원가입_정상_성공() {
 		//given
 		UserSignUpRequest request = SignUpRequestUtils.successRequest1();
@@ -53,7 +51,7 @@ class UserSignUpTest extends ServiceTestSupport {
 	}
 
 	@Test
-	@DisplayName("[SignUp] 중복 닉네임으로 회원가입 실패")
+	@DisplayName("[UserSignUp] 중복 닉네임으로 회원가입 실패")
 	void 중복_닉네임으로_회원가입간_예외를_던진다() {
 		//given
 		UserSignUpRequest sameNickNameA = SignUpRequestUtils.successRequest1();
@@ -71,7 +69,7 @@ class UserSignUpTest extends ServiceTestSupport {
 	}
 
 	@Test
-	@DisplayName("[SignUp] 중복 이메일로 회원가입 실패")
+	@DisplayName("[UserSignUp] 중복 이메일로 회원가입 실패")
 	void 중복_이메일로_회원가입간_예외를_던진다() {
 		//given
 		UserSignUpRequest sameEmailA = SignUpRequestUtils.successRequest1();
