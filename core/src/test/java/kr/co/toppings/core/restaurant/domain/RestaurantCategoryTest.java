@@ -19,7 +19,7 @@ import kr.co.toppings.core.global.error.BusinessException;
 class RestaurantCategoryTest {
 
 	@Test
-	@DisplayName("[RestaurantCategory] - Create RestaurantCategory Test")
+	@DisplayName("[RestaurantCategory] - 식당의 카테고리를 생성한다")
 	void 식당의_카테고리를_생성한다() {
 		// given
 		final Restaurant restaurant = CREATE_SUCCESS.toEntity();
@@ -33,7 +33,7 @@ class RestaurantCategoryTest {
 	}
 
 	@Test
-	@DisplayName("[RestaurantCategory] - Invalid RestaurantCategory Test")
+	@DisplayName("[RestaurantCategory] - 식당의 카테고리를 생성할때 카테고리가 NULL이면 예외를 던진다")
 	void 식당의_카테고리를_생성할때_카테고리가_NULL_이면_예외를_던진다() {
 		// given
 		final Restaurant restaurant = CREATE_SUCCESS.toEntity();
