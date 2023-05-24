@@ -96,12 +96,13 @@ subprojects {
             classDirectories.setFrom(
                 files(classDirectories.files.collect {
                     fileTree(dir: it, excludes: [
+                        '**/global/**',
                         '**/*Application*',
                         '**/*Exception*',
                         '**/dto/**',
-                        '**/config/**'
-                    ])
-                    fileTree(dir: it, excludes: [] + Qdomains)
+                        '**/common/**',
+                        '**/config/**',
+                    ] + Qdomains)
                 })
             )
         }

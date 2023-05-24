@@ -1,6 +1,7 @@
 package kr.co.toppings.core.domain.restaurant;
 
 import kr.co.toppings.core.domain.restaurant.constants.FoodCategory;
+import kr.co.toppings.core.domain.common.entity.BaseAggregateRoot;
 import kr.co.toppings.core.global.error.BusinessException;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -18,7 +19,7 @@ import static kr.co.toppings.core.global.error.ErrorCode.RESTAURANT_INVALID_CATE
 @Getter
 @Table(name = "t_restaurant_category")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class RestaurantCategory {
+public class RestaurantCategory extends BaseAggregateRoot {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

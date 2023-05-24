@@ -1,7 +1,7 @@
 package kr.co.toppings.core.domain.restaurant;
 
 import kr.co.toppings.core.domain.user.User;
-import kr.co.toppings.core.global.entity.BaseEntity;
+import kr.co.toppings.core.domain.common.entity.BaseAggregateRoot;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
@@ -17,7 +17,7 @@ import javax.persistence.*;
 @DynamicUpdate
 @DynamicInsert
 @Table(name = "t_saved_restaurant")
-public class SavedRestaurant extends BaseEntity {
+public class SavedRestaurant extends BaseAggregateRoot {
 
     @Id
     @GeneratedValue

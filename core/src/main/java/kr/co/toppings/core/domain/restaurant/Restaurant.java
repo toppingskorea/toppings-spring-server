@@ -1,6 +1,6 @@
 package kr.co.toppings.core.domain.restaurant;
 
-import kr.co.toppings.core.global.entity.BaseEntity;
+import kr.co.toppings.core.domain.common.entity.BaseAggregateRoot;
 import kr.co.toppings.core.global.error.BusinessException;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -20,7 +20,7 @@ import static org.springframework.util.StringUtils.hasText;
 @DynamicUpdate
 @DynamicInsert
 @Table(name = "t_restaurant")
-public class Restaurant extends BaseEntity {
+public class Restaurant extends BaseAggregateRoot {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

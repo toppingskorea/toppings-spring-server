@@ -1,4 +1,4 @@
-package kr.co.toppings.core.global.entity;
+package kr.co.toppings.core.domain.common.entity;
 
 import java.time.LocalDateTime;
 
@@ -12,12 +12,12 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-import lombok.Data;
+import lombok.Getter;
 
-@Data
-@MappedSuperclass
+@Getter
 @EntityListeners(value = AuditingEntityListener.class)
-public class BaseEntity {
+@MappedSuperclass
+public abstract class BaseEntity {
 
 	@Column(
 		nullable = false,
