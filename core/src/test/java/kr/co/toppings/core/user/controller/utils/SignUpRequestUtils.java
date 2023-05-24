@@ -6,7 +6,7 @@ import kr.co.toppings.core.application.user.dto.request.UserSignUpRequest;
 import kr.co.toppings.core.global.fixture.UserFixture;
 
 public abstract class SignUpRequestUtils {
-	private static final UserFixture testcase = CREATE_SUCCESS_1HABIT;
+	public static final UserFixture testcase = CREATE_SUCCESS_1HABIT;
 
 	public static UserSignUpRequest successRequest1() {
 		return new UserSignUpRequest(

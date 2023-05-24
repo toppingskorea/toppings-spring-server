@@ -14,6 +14,7 @@ dependencies {
 
     // rest-docs
     testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
+    testImplementation project(path: ':core')
     asciidoctorExtensions 'org.springframework.restdocs:spring-restdocs-asciidoctor'
 }
 
