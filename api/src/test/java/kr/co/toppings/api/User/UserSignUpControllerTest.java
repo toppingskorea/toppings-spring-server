@@ -26,9 +26,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import kr.co.toppings.api.global.base.ControllerTestSupport;
 import kr.co.toppings.api.global.dto.response.Success;
 import kr.co.toppings.core.application.user.dto.request.UserSignUpRequest;
-import kr.co.toppings.core.application.user.service.UserSignUpService;
 import kr.co.toppings.core.domain.user.constants.Country;
-import kr.co.toppings.core.domain.user.constants.Habit;
 
 @DisplayName("[Controller] UserSignUp Test")
 public class UserSignUpControllerTest extends ControllerTestSupport {
@@ -37,10 +35,10 @@ public class UserSignUpControllerTest extends ControllerTestSupport {
 
 	@Test
 	@DisplayName("[UserSignUp] 회원가입에 성공한다")
-	void 회원가입_성공() throws Exception {
+	void 회원가입을_성공한다() throws Exception {
 		//given
-		UserSignUpRequest request = new UserSignUpRequest("hbeeen", "hbyeon@student.42seoul.kr", Country.JAPAN,
-			List.of(HALAL, MUSLIMFRIENDLY, NOSUGAR));
+		UserSignUpRequest request = new UserSignUpRequest("hbeeen", "hbyeon@student.42seoul.kr", Country.KOREA,
+			List.of(VEGAN, VEGETARIAN, NOSUGAR));
 		BDDMockito.<Long>given(userSignUpService.signUpUser(any())).willReturn(1L);
 
 		//when

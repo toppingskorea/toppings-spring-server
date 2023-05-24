@@ -19,36 +19,45 @@ dependencies {
 }
 
 ext {
-    snippetsDir = file('build/generated-snippets')
+    set('snippetsDir', file("build/generated-snippets"))
 }
-
-asciidoctor {
-    configurations 'asciidoctorExtensions'
-    inputs.dir snippetsDir
-    dependsOn test
-}
-
 test {
+    // 위에서 작성한 snippetsDir 디렉토리를 test의 output으로 구성하는 설정 -> 스니펫 조각들이 build/generated-snippets로 출력
     outputs.dir snippetsDir
     useJUnitPlatform()
 }
 
+tasks.named('test') { // test task output 디렉토리를 snippetsDir(스니펫 저장 위치)로 지정 합니다.
+    outputs.dir snippetsDir
+    useJUnitPlatform()
+}
+
+tasks.named('asciidoctor') { // asciidoctor task의 input은 snippetsDir(스니펫 저장 위치) 입니다.
+    inputs.dir snippetsDir
+    dependsOn test
+}
+
+asciidoctor.doFirst {
+    delete file('src/main/resources/static/docs/*')
+}
+
 task copyDocument(type: Copy) {
     dependsOn asciidoctor
-    from file("${asciidoctor.outputDir}")
-    into file("build/resources/main/static/docs")
+    from file("build/docs/asciidoc")
+    into file("src/main/resources/static/docs")
+}
+
+build {
+    dependsOn copyDocument
 }
 
 bootJar {
-    dependsOn copyDocument
-    enabled = false
+    dependsOn asciidoctor
+    from ("${asciidoctor.outputDir}/html5") {
+        into 'static/docs'
+    }
 }
 
-jar {
-    dependsOn bootJar
-    enabled = true
-}
-
-bootJarMainClassName {
-    dependsOn copyDocument
+asciidoctor.doFirst {
+    delete file('src/main/resources/static/docs')
 }
