@@ -9,17 +9,15 @@ import java.util.Optional;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ActiveProfiles;
 
-import kr.co.toppings.core.application.user.dto.request.UserSignUpRequest;
+import kr.co.toppings.core.application.user.dto.request.UserInfoRequest;
 import kr.co.toppings.core.application.user.service.UserSignUpService;
 import kr.co.toppings.core.domain.user.User;
 import kr.co.toppings.core.global.base.ServiceTestSupport;
 import kr.co.toppings.core.global.error.BusinessException;
 import kr.co.toppings.core.user.controller.utils.SignUpRequestUtils;
 
-@Rollback
 @DisplayName("[SpringBoot] - UserSignUp Test")
 @ActiveProfiles("test")
 class UserSignUpTest extends ServiceTestSupport {
@@ -28,10 +26,10 @@ class UserSignUpTest extends ServiceTestSupport {
 	private UserSignUpService userSignUpService;
 
 	@Test
-	@DisplayName("[SignUp] 정상 성공")
+	@DisplayName("[UserSignUp] 정상 성공")
 	void 회원가입_정상_성공() {
 		//given
-		UserSignUpRequest request = SignUpRequestUtils.successRequest1();
+		UserInfoRequest request = SignUpRequestUtils.successRequest1();
 
 		//when
 		Long savedUserId = userSignUpService.signUpUser(request);
@@ -53,11 +51,11 @@ class UserSignUpTest extends ServiceTestSupport {
 	}
 
 	@Test
-	@DisplayName("[SignUp] 중복 닉네임으로 회원가입 실패")
+	@DisplayName("[UserSignUp] 중복 닉네임으로 회원가입 실패")
 	void 중복_닉네임으로_회원가입간_예외를_던진다() {
 		//given
-		UserSignUpRequest sameNickNameA = SignUpRequestUtils.successRequest1();
-		UserSignUpRequest sameNickNameB = SignUpRequestUtils.successRequest2();
+		UserInfoRequest sameNickNameA = SignUpRequestUtils.successRequest1();
+		UserInfoRequest sameNickNameB = SignUpRequestUtils.successRequest2();
 
 		//when
 		Long savedUserIdA = userSignUpService.signUpUser(sameNickNameA);
@@ -71,11 +69,11 @@ class UserSignUpTest extends ServiceTestSupport {
 	}
 
 	@Test
-	@DisplayName("[SignUp] 중복 이메일로 회원가입 실패")
+	@DisplayName("[UserSignUp] 중복 이메일로 회원가입 실패")
 	void 중복_이메일로_회원가입간_예외를_던진다() {
 		//given
-		UserSignUpRequest sameEmailA = SignUpRequestUtils.successRequest1();
-		UserSignUpRequest sameEmailB = SignUpRequestUtils.successRequest3();
+		UserInfoRequest sameEmailA = SignUpRequestUtils.successRequest1();
+		UserInfoRequest sameEmailB = SignUpRequestUtils.successRequest3();
 
 		//when
 		Long savedUserIdA = userSignUpService.signUpUser(sameEmailA);

@@ -77,9 +77,6 @@ public class User extends BaseEntity {
 	@AttributeOverride(name = "path", column = @Column(name = "user_profile_path", columnDefinition = "varchar(200)"))
 	private Image profile;
 
-	@Column(name = "delete_yn", columnDefinition = "varchar(1) default 'N'")
-	private String deleteYn;
-
 	//==생성 Method==//
 	public User(
 		NickName nickName,
@@ -106,7 +103,6 @@ public class User extends BaseEntity {
 	private void applyHabits(List<Habit> habitList) {
 		habitList.forEach(habit -> habits.add(createUserHabit(this, habit)));
 	}
-
 	public String getNickNameValue() {
 		return nickName.getValue();
 	}
