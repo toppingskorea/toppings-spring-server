@@ -26,7 +26,7 @@ public class UserDeleteServiceTest extends ServiceTestSupport {
 	UserFindService userFindService;
 
 	@Test
-	@DisplayName("[UserDelete] 회원 탈퇴 성공")
+	@DisplayName("[UserDelete] 회원 탈퇴 정상 성공")
 	void 회원_탈퇴에_성공한다() {
 		//given
 		User user = userJpaRepository.save(CREATE_SUCCESS_2HABIT.toEntity());

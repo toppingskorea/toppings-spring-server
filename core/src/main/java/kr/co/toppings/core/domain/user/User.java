@@ -116,6 +116,10 @@ public class User extends BaseEntity {
 		this.nickName = nickName;
 	}
 
+	public void updateCountry(Country country) {
+		this.country = country;
+	}
+
 	public void updateHabits(List<Habit> habitList) {
 		// 기존 HabitList 비우기
 		habits.clear();

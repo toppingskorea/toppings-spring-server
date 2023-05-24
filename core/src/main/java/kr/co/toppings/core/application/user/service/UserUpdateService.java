@@ -25,6 +25,7 @@ public class UserUpdateService {
 
 		userValidator.validateNickNameIsNotDuplicated(nickName);
 		user.updateNickName(nickName);
+		user.updateCountry(request.getCountry());
 		user.updateHabits(request.getHabits());
 	}
 
