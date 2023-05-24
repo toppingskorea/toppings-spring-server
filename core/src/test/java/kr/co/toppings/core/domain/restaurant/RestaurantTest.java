@@ -1,4 +1,4 @@
-package kr.co.toppings.core.restaurant.domain;
+package kr.co.toppings.core.domain.restaurant;
 
 import kr.co.toppings.core.domain.restaurant.Restaurant;
 import kr.co.toppings.core.global.error.BusinessException;
