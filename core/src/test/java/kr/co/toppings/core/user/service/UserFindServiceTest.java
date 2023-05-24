@@ -15,7 +15,7 @@ import kr.co.toppings.core.domain.user.User;
 import kr.co.toppings.core.global.base.ServiceTestSupport;
 
 @Rollback
-@DisplayName("[SpringBootTest] - UserFind Test")
+@DisplayName("[SpringBoot] - UserFind Test")
 @ActiveProfiles("test")
 class UserFindServiceTest extends ServiceTestSupport {
 

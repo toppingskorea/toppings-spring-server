@@ -16,7 +16,7 @@ import kr.co.toppings.core.global.base.ServiceTestSupport;
 import kr.co.toppings.core.global.error.BusinessException;
 
 @ActiveProfiles("test")
-@DisplayName("[SpringBootTest] - UserDelete Test")
+@DisplayName("[SpringBoot] - UserDelete Test")
 public class UserDeleteServiceTest extends ServiceTestSupport {
 
 	@Autowired
@@ -33,7 +33,7 @@ public class UserDeleteServiceTest extends ServiceTestSupport {
 		User savedUser = userQueryRepository.findById(user.getId()).get();
 		assertThat(user).isEqualTo(savedUser);
 		//when
-		userDeleteService.deleteUser(savedUser.getId());
+		userDeleteService.deleteByUserId(savedUser.getId());
 
 		//then
 		assertThatThrownBy(

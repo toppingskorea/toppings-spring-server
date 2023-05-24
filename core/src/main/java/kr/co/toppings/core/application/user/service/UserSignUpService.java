@@ -3,7 +3,7 @@ package kr.co.toppings.core.application.user.service;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import kr.co.toppings.core.application.user.dto.request.UserInfoRequest;
+import kr.co.toppings.core.application.user.dto.request.UserSignUpRequest;
 import kr.co.toppings.core.domain.user.User;
 import kr.co.toppings.core.infrastructure.user.persistence.UserJpaRepository;
 import lombok.RequiredArgsConstructor;
@@ -22,7 +22,7 @@ public class UserSignUpService {
 	private final UserJpaRepository userJpaRepository;
 
 	@Transactional
-	public Long signUpUser(UserInfoRequest request) {
+	public Long signUpUser(UserSignUpRequest request) {
 		User user = generateUser(request);
 		validateUser(user);
 		User saveUser = userJpaRepository.save(user);
@@ -34,7 +34,7 @@ public class UserSignUpService {
 		userValidator.validateEmailIsNotDuplicated(user.getEmail());
 	}
 
-	private User generateUser(UserInfoRequest request) {
+	private User generateUser(UserSignUpRequest request) {
 		return User.createUser(
 			request.getNickName(),
 			request.getEmail(),

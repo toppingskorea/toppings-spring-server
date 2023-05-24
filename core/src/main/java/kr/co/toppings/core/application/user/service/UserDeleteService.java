@@ -13,7 +13,7 @@ public class UserDeleteService {
 
 	private final UserJpaRepository userJpaRepository;
 
-	public void deleteUser(Long userId) {
+	public void deleteByUserId(Long userId) {
 		userJpaRepository.deleteById(userId);
 	}
 }

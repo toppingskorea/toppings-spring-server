@@ -103,11 +103,22 @@ public class User extends BaseEntity {
 	private void applyHabits(List<Habit> habitList) {
 		habitList.forEach(habit -> habits.add(createUserHabit(this, habit)));
 	}
+
 	public String getNickNameValue() {
 		return nickName.getValue();
 	}
 
 	public String getEmailValue() {
 		return email.getValue();
+	}
+
+	public void updateNickName(NickName nickName) {
+		this.nickName = nickName;
+	}
+
+	public void updateHabits(List<Habit> habitList) {
+		// 기존 HabitList 비우기
+		habits.clear();
+		habitList.forEach(habit -> habits.add(createUserHabit(this, habit)));
 	}
 }
