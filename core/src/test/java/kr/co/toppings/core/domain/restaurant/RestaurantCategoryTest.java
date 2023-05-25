@@ -1,4 +1,4 @@
-package kr.co.toppings.core.restaurant.domain;
+package kr.co.toppings.core.domain.restaurant;
 
 import static kr.co.toppings.core.domain.restaurant.constants.FoodCategory.*;
 import static kr.co.toppings.core.global.error.ErrorCode.*;

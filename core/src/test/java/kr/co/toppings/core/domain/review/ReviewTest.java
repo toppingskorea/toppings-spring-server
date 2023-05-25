@@ -1,4 +1,4 @@
-package kr.co.toppings.core.review.domain;
+package kr.co.toppings.core.domain.review;
 
 import static kr.co.toppings.core.global.error.ErrorCode.*;
 import static kr.co.toppings.core.global.fixture.ReviewFixture.*;
