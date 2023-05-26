@@ -1,5 +1,4 @@
-= Natural REST API Guide
-박태하;
+= REST API Guide
 :doctype: book
 :icons: font
 :source-highlighter: highlightjs
@@ -9,6 +8,4 @@
 :operation-curl-request-title: Example request
 :operation-http-response-title: Example response
 
-[[user]]
-== A. UserController API
 include::user/user.adoc[]

@@ -23,7 +23,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import kr.co.toppings.api.global.config.RestDocsConfig;
 import kr.co.toppings.api.presentation.User.UserSignUpController;
-import kr.co.toppings.core.application.user.service.UserSignUpService;
 
 @WebMvcTest(UserSignUpController.class)
 @ExtendWith(RestDocumentationExtension.class)
@@ -41,14 +40,13 @@ public abstract class ControllerTestSupport {
 	protected ObjectMapper objectMapper;
 
 	@MockBean
-	protected UserSignUpService userSignUpService;
-
-	@MockBean
 	protected ApplicationEventPublisher publisher;
 
 	@BeforeEach
-	void setUp(final WebApplicationContext context,
-		final RestDocumentationContextProvider provider) {
+	void setUp(
+		final WebApplicationContext context,
+		final RestDocumentationContextProvider provider
+	) {
 		this.mockMvc = MockMvcBuilders.webAppContextSetup(context)
 			.apply(MockMvcRestDocumentation.documentationConfiguration(provider))  // rest docs 설정 주입
 			.alwaysDo(MockMvcResultHandlers.print()) // andDo(print()) 코드 포함

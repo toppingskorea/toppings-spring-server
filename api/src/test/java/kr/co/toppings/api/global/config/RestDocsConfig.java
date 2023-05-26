@@ -5,6 +5,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.restdocs.mockmvc.MockMvcRestDocumentation;
 import org.springframework.restdocs.mockmvc.RestDocumentationResultHandler;
 import org.springframework.restdocs.operation.preprocess.Preprocessors;
+import org.springframework.restdocs.snippet.Attributes;
+import org.springframework.restdocs.snippet.Attributes.Attribute;
 
 @TestConfiguration
 public class RestDocsConfig {
@@ -16,5 +18,12 @@ public class RestDocsConfig {
 			Preprocessors.preprocessRequest(Preprocessors.prettyPrint()),
 			Preprocessors.preprocessResponse(Preprocessors.prettyPrint())
 		);
+	}
+
+	public static Attribute field(
+		final String key,
+		final String value
+	) {
+		return new Attribute(key, value);
 	}
 }
